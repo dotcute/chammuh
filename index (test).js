@@ -1,6 +1,7 @@
 const canvas = document.getElementById('game'),
   ctx = canvas.getContext('2d'),
-  logo = new Image();
+  logo = new Image(),
+  httpRequest = new XMLHttpRequest();
 
 let nickname = undefined, response = new Array, script;
 
