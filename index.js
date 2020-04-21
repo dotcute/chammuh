@@ -22,7 +22,7 @@ confirm = (title, id, placeholder, func) => {
         confirmButtonText: '확인'
     }).then((result) => {
         if (result.value) {
-            func(result.value, id)
+            func(id)
         }
     })
 }
