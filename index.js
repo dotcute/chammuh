@@ -1,10 +1,17 @@
 const canvas = document.getElementById('game'),
     ctx = canvas.getContext('2d'),
-    logo = new Image(),
-    scripts = ['안녕 ${nickname}! 머리 깎으러 왔구나!', '빨리 앉아!', '다 깎아주겠어...', '빨리 앉으라니까!', '앉아버렸다...']
+    logo = new Image()
 let lvl = 0,
     nickname = undefined,
-    response = new Array
+    response = new Array,
+    scripts,
+    httpRequest = new XMLHttpRequest()
+
+httpRequest.onreadystatechange = (data) => {
+    scripts = JSON.parse(data.target.response).story[0]
+}
+httpRequest.open('GET', 'https://rawcdn.githack.com/EntryJSers/chammuh_assets/932802ca3b542079c40d6be718257dfb2cdeadc2/scripts/script.json')
+httpRequest.send()
 
 confirm = (title, id, placeholder, func) => {
     Swal.fire({
@@ -44,7 +51,7 @@ const say = () => {
     eval(`switch (lvl) {\n${cases}}`)
 }
 const printText = (text) => {
-    logo.src = `img/${lvl}.png`
+    logo.src = `https://entryjsers.github.io/chammuh_assets/img/${lvl}.png`
     ctx.clearRect(0, 430, canvas.width, canvas.height)
     ctx.font = '24px Spoqa Han Sans'
     ctx.fillStyle = 'white'
