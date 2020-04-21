@@ -3,8 +3,7 @@ const canvas = document.getElementById('game'),
     logo = new Image()
 let lvl = 0,
     nickname = undefined,
-    response = new Array,
-    scripts
+    response = new Array
 
 const script = require('./script.json');
 
@@ -71,14 +70,6 @@ const playConv = (content) => {
       }
     }, 100);
   });
-}
-
-const say = () => {
-    let cases = ''
-    for (let i in scripts) {
-        cases += `case ${Number(i) + 1}:\n  printText(\`${scripts[i]}\`)\n  break\n`
-    }
-    eval(`switch (lvl) {\n${cases}}`)
 }
 
 const printText = (text) => {
