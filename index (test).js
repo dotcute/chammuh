@@ -1,11 +1,10 @@
 const canvas = document.getElementById('game'),
   ctx = canvas.getContext('2d'),
-  logo = new Image()
-let nickname = undefined,
-  response = new Array,
-  script
+  logo = new Image();
 
-script = await fetch("test.json").json();
+let nickname = undefined, response = new Array;
+
+const script = await fetch("test.json").json();
 
 confirm = (title, id, placeholder, func) => {
     Swal.fire({
