@@ -41,6 +41,7 @@ Swal.fire({
 let isClick = false;
 
 const playScene = (name) => {
+  alert('playScene 실행됨');
   const scene = script[name];
   scene.forEach(s => {
     switch (s.type) {
