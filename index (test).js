@@ -5,11 +5,7 @@ let nickname = undefined,
   response = new Array,
   script
 
-fetch("test.json")
-  .then(res => res.json())
-  .then(json => script = json);
-
-// let script = require(['./script.json']);
+script = await fetch("test.json").json();
 
 confirm = (title, id, placeholder, func) => {
     Swal.fire({
