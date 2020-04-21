@@ -1,6 +1,7 @@
 const canvas = document.getElementById('game'),
     ctx = canvas.getContext('2d'),
-    logo = new Image()
+    logo = new Image(),
+    scripts = ['안녕 ${nickname}! 머리 깎으러 왔구나!', '빨리 앉아!', '다 깎아주겠어...', '빨리 앉으라니까!', '앉아버렸다...']
 let lvl = 0,
     nickname = undefined,
     response = new Array
@@ -36,25 +37,11 @@ Swal.fire({
 
 
 const say = () => {
-    switch (lvl) {
-        case 1:
-            printText(`안녕 ${nickname}! 머리 깎으러 왔구나!`)
-            break
-        case 2:
-            printText('빨리 앉아!')
-            break
-        case 3:
-            printText('다 깎아주겠어...')
-            break
-        case 4:
-            printText('빨리 앉으라니까!')
-            break
-        case 5:
-            printText('앉아버렸다...')
-            break
-        default:
-            printText('-끗-')
+    let cases = ''
+    for (let i in scripts) {
+        cases += `case ${Number(i) + 1}:\n  printText(\`${scripts[i]}\`)\n  break\n`
     }
+    eval(`switch (lvl) {\n${cases}}`)
 }
 const printText = (text) => {
     logo.src = `img/${lvl}.png`
