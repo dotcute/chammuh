@@ -1,8 +1,7 @@
 const canvas = document.getElementById('game'),
     ctx = canvas.getContext('2d'),
     logo = new Image()
-let lvl = 0,
-    nickname = undefined,
+let nickname = undefined,
     response = new Array
 
 const script = require('./script.json');
@@ -64,7 +63,7 @@ const playConv = (content) => {
   content.forEach(c => {
     let loop = setInterval(() => {
       if (isClick) {
-        printText(eval(`\`${c}\``));
+        printText(eval(`\`${c[0]}\``), c[1]);
         isClick = false;
         clearInterval(loop);
       }
@@ -72,8 +71,8 @@ const playConv = (content) => {
   });
 }
 
-const printText = (text) => {
-    logo.src = `https://entryjsers.github.io/chammuh_assets/img/${lvl}.png`
+const printText = (text, imageURL) => {
+    logo.src = `./assets/${imageURL}.png`
     ctx.clearRect(0, 430, canvas.width, canvas.height)
     ctx.font = '24px Spoqa Han Sans'
     ctx.fillStyle = 'white'

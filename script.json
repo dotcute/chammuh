@@ -2,7 +2,9 @@
   "main": [
     {
       "type": "conv",
-      "content": ["클릭해서 시작..."]
+      "content": [
+        [ "클릭해서 시작...", "title" ]
+      ]
     },
     {
       "type": "scene",
@@ -12,7 +14,13 @@
   "story": [
     {
       "type": "conv",
-      "content": ["안녕 ${nickname}! 머리 깎으러 왔구나!", "빨리 앉아!", "다 깎아주겠어...", "빨리 앉으라니까!", "앉아버렸다..."]
+      "content": [
+        [ "안녕 ${nickname}! 머리 깎으러 왔구나!", "chammuh_normal" ],
+        [ "빨리 앉아!", "chammuh_normal" ],
+        [ "다 깎아주겠어...", "chammuh_evil" ],
+        [ "빨리 앉으라니까!", "chammuh_evil" ],
+        [ "앉아버렸다...", "exon_caught" ]
+      ]
     }
   ]
 }
