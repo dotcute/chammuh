@@ -4,7 +4,7 @@ const canvas = document.getElementById('game'),
 
 let nickname = undefined, response = new Array;
 
-const script = await fetch("test.json").json();
+const script = fetch("test.json").json();
 
 confirm = (title, id, placeholder, func) => {
     Swal.fire({
