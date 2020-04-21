@@ -37,8 +37,8 @@ Swal.fire({
     }
 })
 
-let isClick = false;
 
+let isClick = false;
 
 const playScene = (name) => {
   const scene = script[name];
@@ -54,7 +54,7 @@ const playScene = (name) => {
         playScene(s.content);
         break;
       default:
-        console.log('에러다 에러 예상치 못한 타입이다');
+        alert('에러다 에러 예상치 못한 타입이다');
         break;
     }
   });
@@ -79,6 +79,7 @@ const say = () => {
     }
     eval(`switch (lvl) {\n${cases}}`)
 }
+
 const printText = (text) => {
     logo.src = `https://entryjsers.github.io/chammuh_assets/img/${lvl}.png`
     ctx.clearRect(0, 430, canvas.width, canvas.height)
@@ -88,11 +89,13 @@ const printText = (text) => {
 }
 
 window.addEventListener('load', () => {
-    playScene('main');
-})
+  playScene('main');
+});
+
 logo.addEventListener('load', () => {
-    ctx.drawImage(logo, 0, 0, 960, 420)
-}, false)
+  ctx.drawImage(logo, 0, 0, 960, 420)
+}, false);
+
 canvas.addEventListener('click', () => {
-    isClick = true;
-})
+  isClick = true;
+});
