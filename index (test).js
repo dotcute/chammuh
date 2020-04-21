@@ -64,7 +64,7 @@ const playConv = (content) => {
   content.forEach(c => {
     let loop = setInterval(() => {
       if (isClick) {
-        printText(c);
+        printText(eval(`\`${c}\``));
         isClick = false;
         clearInterval(loop);
       }
