@@ -71,8 +71,8 @@ const playConv = (content) => {
   });
 }
 
-const printText = (text, imageURL) => {
-    logo.src = `./assets/${imageURL}.png`
+const printText = (text, img) => {
+    logo.src = `./assets/${img}.png`
     ctx.clearRect(0, 430, canvas.width, canvas.height)
     ctx.font = '24px Spoqa Han Sans'
     ctx.fillStyle = 'white'
