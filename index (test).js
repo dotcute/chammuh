@@ -1,13 +1,14 @@
 const canvas = document.getElementById('game'),
   ctx = canvas.getContext('2d'),
-  logo = new Image(),
-  script;
+  logo = new Image();
 
-let nickname = undefined, response = new Array;
+let nickname = undefined, response = new Array, script;
 
-fetch("test.json")
-  .then(res => res.json())
-  .then(json => script = json);
+httpRequest.onreadystatechange = (data) => {
+  script = JSON.parse(data.target.response)
+}
+httpRequest.open('GET', 'https://rawcdn.githack.com/EntryJSers/chammuh/9fa0414a796620a4fc23e3e6177786234de81187/script.json')
+httpRequest.send()
 
 confirm = (title, id, placeholder, func) => {
     Swal.fire({
