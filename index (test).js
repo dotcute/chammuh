@@ -7,7 +7,7 @@ let nickname = undefined, response = new Array, script;
 httpRequest.onreadystatechange = (data) => {
   script = JSON.parse(data.target.response)
 }
-httpRequest.open('GET', 'https://rawcdn.githack.com/EntryJSers/chammuh/9fa0414a796620a4fc23e3e6177786234de81187/script.json')
+httpRequest.open('GET', 'https://raw.githack.com/EntryJSers/chammuh/master/script.json')
 httpRequest.send()
 
 confirm = (title, id, placeholder, func) => {
