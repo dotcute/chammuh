@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chammuh barber</title>
+    <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" rel="stylesheet" type="text/css">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: 'Spoqa Han Sans', 'Sans-serif';
+        }
+
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        canvas {
+            background: #0044ff9a;
+            margin: 0 auto;
+            border-radius: 2rem;
+        }
+
+        .title {
+            margin-top: 10px;
+            font-weight: 100;
+            font-size: 2rem;
+        }
+
+        .container p {
+            font-weight: 100;
+            font-size: 1.3em;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <canvas id="game" height="540" width="960"></canvas>
+        <h1 class="title">참연시 - 참머barber</h1>
+        <p>참머와 엑슨의 <del>알콩달콩 사랑</del> 이야기!</p>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="index.js"></script>
+
+</html>
