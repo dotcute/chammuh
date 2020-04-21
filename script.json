@@ -7,10 +7,6 @@
     {
       "type": "scene",
       "content": "story"
-    },
-    {
-      "type": "conv",
-      "content": ["이 메시지가 표시된다면 프네우마의 테스트가 성공한 것입니다!"]
     }
   ],
   "story": [
