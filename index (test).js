@@ -90,6 +90,7 @@ const printText = (text) => {
 }
 
 window.addEventListener('load', () => {
+  alert('window.addEventListener load 실행됨');
   playScene('main');
 });
 
