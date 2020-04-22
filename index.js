@@ -57,7 +57,7 @@ const playScene = (script, name) => {
           await playQues(s.content, s.answer);
           break;
         case 'scene':
-          await playScene(s.content);
+          await playScene(script, s.content);
           break;
         default:
           alert('에러 발생: 정의되지 않은 type 값입니다.');
