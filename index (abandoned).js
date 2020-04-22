@@ -7,6 +7,7 @@ let nickname = undefined, response = new Array, script;
 
 httpRequest.onreadystatechange = (data) => {
   script = JSON.parse(data.target.response)
+  playScene('main');
 }
 httpRequest.open('GET', 'https://raw.githack.com/EntryJSers/chammuh/master/script.json')
 httpRequest.send()
@@ -88,7 +89,6 @@ const printText = (text, img) => {
 }
 
 window.addEventListener('load', () => {
-  playScene('main');
 });
 
 logo.addEventListener('load', () => {
