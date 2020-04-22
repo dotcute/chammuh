@@ -77,7 +77,7 @@ const playConv = (content) => {
 const waitUntilClick = (content) => {
   console.log('loop')
   if (isClick == false) {
-    setTimeout(waitUntilClick, 100);
+    setTimeout(waitUntilClick, 100, content);
   }
   else printText(eval(`\`${content[0]}\``), content[1]);
 }
