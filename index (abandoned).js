@@ -44,42 +44,45 @@ Swal.fire({
 
 let isClick = false;
 
-const playScene = async (name) => {
-  console.log(name);
-  const scene = script[name];
-  for (let s of scene) {
-    switch (s.type) {
-      case 'conv':
-        await playConv(s.content);
-        break;
-      /*case 'ques':
-        playQues(s.content, s.answer.contents, s.answer.scene);
-        break;*/
-      case 'scene':
-        await playScene(s.content);
-        break;
-      default:
-        alert('에러다 에러 예상치 못한 타입이다');
-        break;
+const playScene = (name) => {
+  return new Promise(async (resolve, reject) => {
+    const scene = script[name];
+    for (let s of scene) {
+      switch (s.type) {
+        case 'conv':
+          await playConv(s.content);
+          break;
+        /*case 'ques':
+          playQues(s.content, s.answer.contents, s.answer.scene);
+          break;*/
+        case 'scene':
+          await playScene(s.content);
+          break;
+        default:
+          alert('에러다 에러 예상치 못한 타입이다');
+          break;
+      }
     }
-  }
+  })
 };
 
-const playConv = async (content) => {
-  console.log(content);
-  
-  for (let c of content) {
-    console.log(c)
-    await waitUntilClick(c);
-  }
+const playConv = (content) => {
+  return new Promise(async (resolve, reject) => {
+    for (let c of content) {
+      console.log(c)
+      await waitUntilClick(c);
+    }
+  })
 }
 
 const waitUntilClick = async (content) => {
-  console.log('loop')
-  if (isClick == false) {
-    await setTimeout(waitUntilClick, 100, content);
-  }
-  else printText(eval(`\`${content[0]}\``), content[1]);
+  return new Promise(async (resolve, reject) => {
+    console.log('loop')
+    if (isClick == false) {
+      await setTimeout(waitUntilClick, 100, content);
+    }
+    else printText(eval(`\`${content[0]}\``), content[1]);
+  })
 }
 
 const printText = (text, img) => {
