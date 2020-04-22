@@ -16,7 +16,8 @@ httpRequest.send()
 */
 
 httpRequest.onreadystatechange = (data) => {
-    scripts = JSON.parse(data.target.response)
+  scripts = JSON.parse(data.target.response)
+  play('main')
 }
 httpRequest.open('GET', 'https://raw.githack.com/EntryJSers/chammuh/master/script.json')
 httpRequest.send()
@@ -91,7 +92,6 @@ const printText = (text, img) => {
 
 window.addEventListener('load', () => {
     printText('\n클릭해서 시작...')
-    play('main')
 })
 logo.addEventListener('load', () => {
     ctx.drawImage(logo, 0, 0, 960, 420)
