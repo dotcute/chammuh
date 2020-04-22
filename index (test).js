@@ -55,7 +55,9 @@ const play = (scene) => {
   for (let i = 0; i < scripts[scene].length; i++) {
     console.log(i)
     if (scripts[scene][i].type == 'conv') {
-      cases += `case ${Number(i) + 1}:\n  printText(\`${scripts[scene][i].content[0]}\`, \`${scripts[scene][i].content[1]}\`)\n  break\n`
+      for (let j = 0; j < scripts[scene][i].content.length; j++) {
+        cases += `case ${Number(i) + 1}:\n  printText(\`${scripts[scene][i].content[j][0]}\`, \`${scripts[scene][i].content[j][1]}\`)\n  break\n`
+      }
     }
     if (scripts[scene][i].type == 'scene') {
       play(scripts[scene][i].content)
@@ -89,11 +91,11 @@ const printText = (text, img) => {
 
 window.addEventListener('load', () => {
     printText('\n클릭해서 시작...')
+    play('main')
 })
 logo.addEventListener('load', () => {
     ctx.drawImage(logo, 0, 0, 960, 420)
 }, false)
 canvas.addEventListener('click', () => {
     lvl += 1
-    play('main')
 })
