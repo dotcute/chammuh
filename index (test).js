@@ -92,7 +92,7 @@ const printText = (text, img) => {
 }
 
 window.addEventListener('load', () => {
-    printText('\n클릭해서 시작...')
+    printText('\n클릭해서 시작...', 'title')
 })
 logo.addEventListener('load', () => {
     ctx.drawImage(logo, 0, 0, 960, 420)
