@@ -44,19 +44,19 @@ Swal.fire({
 
 let isClick = false;
 
-const playScene = (name) => {
+const playScene = async (name) => {
   console.log(name);
   const scene = script[name];
   for (let s of scene) {
     switch (s.type) {
       case 'conv':
-        playConv(s.content);
+        await playConv(s.content);
         break;
       /*case 'ques':
         playQues(s.content, s.answer.contents, s.answer.scene);
         break;*/
       case 'scene':
-        playScene(s.content);
+        await playScene(s.content);
         break;
       default:
         alert('에러다 에러 예상치 못한 타입이다');
@@ -70,7 +70,7 @@ const playConv = (content) => {
   
   for (let c of content) {
     console.log(c)
-    waitUntilClick(c);
+    await waitUntilClick(c);
   }
 }
 
