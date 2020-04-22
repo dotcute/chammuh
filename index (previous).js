@@ -14,13 +14,11 @@ httpRequest.onreadystatechange = (data) => {
 httpRequest.open('GET', 'https://rawcdn.githack.com/EntryJSers/chammuh_assets/932802ca3b542079c40d6be718257dfb2cdeadc2/scripts/script.json')
 httpRequest.send()
 */
-
 httpRequest.onreadystatechange = (data) => {
-  scripts = JSON.parse(data.target.response)
-  play('main')
+    scripts = JSON.parse(data.target.response)
 }
 httpRequest.open('GET', 'https://raw.githack.com/EntryJSers/chammuh/master/script.json')
-// httpRequest.send()
+httpRequest.send()
 
 confirm = (title, id, placeholder, func) => {
     Swal.fire({
@@ -52,18 +50,16 @@ Swal.fire({
 })
 
 let cases = ''
-const play = (scene) => {
-  for (let i = 0; i < scripts[scene].length; i++) {
-    console.log(i)
-    if (scripts[scene][i].type == 'conv') {
-      for (let j = 0; j < scripts[scene][i].content.length; j++) {
-        // printText(scripts[scene][i].content[j][0], scripts[scene][i].content[j][1])
-        cases += `case ${Number(i) + 1}:\n  printText(\`${scripts[scene][i].content[j][0]}\`, \'${scripts[scene][i].content[j][1]}\')\n  break\n`
-      }
-    }
-    if (scripts[scene][i].type == 'scene') {
-      play(scripts[scene][i].content)
-    }
+const say = (scene) => {
+    
+    for (let i = 0; i < scripts[scene].length; i++) {
+        console.log(i)
+        if (scripts[scene][i].type == 'conv') {
+            cases += `case ${Number(i) + 1}:\n  printText(\`${scripts[scene][i].content[0]}\`)\n  break\n`
+        }
+        if (scripts[scene][i].type == 'scene') {
+            say(scripts[scene][i].content)
+        }
         /*
         switch (scripts[scene][i].type) {
             case 'conv':
@@ -80,11 +76,11 @@ const play = (scene) => {
                 break
         }
         */
-  }
-  eval(`switch (lvl) {\n${cases}}`)
+    }
+    eval(`switch (lvl) {\n${cases}}`)
 }
-const printText = (text, img) => {
-    logo.src = `https://rawcdn.githack.com/EntryJSers/chammuh_assets/master/assets/${img}.png`
+const printText = (text) => {
+    logo.src = `https://rawcdn.githack.com/EntryJSers/chammuh_assets/932802ca3b542079c40d6be718257dfb2cdeadc2/img/${lvl}.png`
     ctx.clearRect(0, 430, canvas.width, canvas.height)
     ctx.font = '24px Spoqa Han Sans'
     ctx.fillStyle = 'white'
@@ -92,11 +88,12 @@ const printText = (text, img) => {
 }
 
 window.addEventListener('load', () => {
-    printText('\n클릭해서 시작...', 'title')
+    printText('\n클릭해서 시작...')
 })
 logo.addEventListener('load', () => {
     ctx.drawImage(logo, 0, 0, 960, 420)
 }, false)
 canvas.addEventListener('click', () => {
     lvl += 1
+    say('main')
 })

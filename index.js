@@ -1,24 +1,9 @@
 const canvas = document.getElementById('game'),
-    ctx = canvas.getContext('2d'),
-    logo = new Image()
-let lvl = 0,
-    nickname = undefined,
-    response = new Array,
-    scripts,
-    httpRequest = new XMLHttpRequest()
+  ctx = canvas.getContext('2d'),
+  logo = new Image(),
+  httpRequest = new XMLHttpRequest();
 
-/*
-httpRequest.onreadystatechange = (data) => {
-    scripts = JSON.parse(data.target.response).story[0]
-}
-httpRequest.open('GET', 'https://rawcdn.githack.com/EntryJSers/chammuh_assets/932802ca3b542079c40d6be718257dfb2cdeadc2/scripts/script.json')
-httpRequest.send()
-*/
-httpRequest.onreadystatechange = (data) => {
-    scripts = JSON.parse(data.target.response)
-}
-httpRequest.open('GET', 'https://raw.githack.com/EntryJSers/chammuh/master/script.json')
-httpRequest.send()
+let nickname = undefined, response = new Array;
 
 confirm = (title, id, placeholder, func) => {
     Swal.fire({
@@ -49,51 +34,86 @@ Swal.fire({
     }
 })
 
-let cases = ''
-const say = (scene) => {
-    
-    for (let i = 0; i < scripts[scene].length; i++) {
-        console.log(i)
-        if (scripts[scene][i].type == 'conv') {
-            cases += `case ${Number(i) + 1}:\n  printText(\`${scripts[scene][i].content[0]}\`)\n  break\n`
-        }
-        if (scripts[scene][i].type == 'scene') {
-            say(scripts[scene][i].content)
-        }
-        /*
-        switch (scripts[scene][i].type) {
-            case 'conv':
-                cases += `case ${Number(i) + 1}:\n  printText(\`${scripts[scene][i].content}\`)\n  break\n`
-                break
-            case 'ques':
-              playQues(s.content, s.answer.contents, s.answer.scene)
-              break
-            case 'scene':
-                say(scripts[scene][i].content)
-                break
-            default:
-                console.error('에러다 에러 예상치 못한 타입이다')
-                break
-        }
-        */
+/*
+let isClick = false;
+
+const playScene = (name) => {
+  return new Promise(async (resolve, reject) => {
+    const scene = script[name];
+    for (let s of scene) {
+      switch (s.type) {
+        case 'conv':
+          await playConv(s.content);
+          break;
+        case 'ques':
+          await playQues(s.content, s.answer);
+          break;
+        case 'scene':
+          await playScene(s.content);
+          break;
+        default:
+          alert('에러 발생: 정의되지 않은 type 값입니다.');
+          break;
+      }
     }
-    eval(`switch (lvl) {\n${cases}}`)
+    resolve()
+  })
+};
+
+const playConv = (content) => {
+  return new Promise(async (resolve, reject) => {
+    for (let c of content) {
+      console.log(c)
+      await waitUntilClick(c);
+    }
+    resolve()
+  })
 }
-const printText = (text) => {
-    logo.src = `https://rawcdn.githack.com/EntryJSers/chammuh_assets/932802ca3b542079c40d6be718257dfb2cdeadc2/img/${lvl}.png`
+
+const playQues = (content, answer) => {
+  return new Promise(async (resolve, reject) => {
+    for (let c of content) {
+      console.log(c)
+      await waitUntilClick(c);
+    }
+    resolve()
+  })
+}
+
+const waitUntilClick = (content) => {
+  return new Promise(async (resolve, reject) => {
+    let loop = setInterval(() => {
+      if (isClick) {
+        printText(eval(`\`${content[0]}\``), content[1])
+        isClick = false
+        resolve()
+        clearInterval(loop)
+      }
+    }, 100)
+  })
+}
+
+const printText = (text, img) => {
+    if (img) logo.src = `https://rawcdn.githack.com/EntryJSers/chammuh_assets/master/assets/${img}.png`
     ctx.clearRect(0, 430, canvas.width, canvas.height)
     ctx.font = '24px Spoqa Han Sans'
     ctx.fillStyle = 'white'
     ctx.fillText(text, (canvas.width / 2) - (ctx.measureText(text).width / 2), 470)
 }
+*/
+
+fetch('https://raw.githack.com/EntryJSers/chammuh/master/script.json')
+  .then(res => res.json())
+  .then(json => playScript(json, 'main'))
 
 window.addEventListener('load', () => {
-    printText('\n클릭해서 시작...')
-})
+  printText('클릭하여 시작..', 'title')
+});
+
 logo.addEventListener('load', () => {
-    ctx.drawImage(logo, 0, 0, 960, 420)
-}, false)
+  ctx.drawImage(logo, 0, 0, 960, 420)
+}, false);
+
 canvas.addEventListener('click', () => {
-    lvl += 1
-    say('main')
-})
+  isClick = true;
+});
