@@ -5,6 +5,8 @@ const canvas = document.getElementById('game'),
 
 let nickname = undefined, response = new Array;
 
+// ====================================================================================================
+
 confirm = (title, id, placeholder, func) => {
     Swal.fire({
         title: title,
@@ -34,12 +36,18 @@ Swal.fire({
     }
 })
 
-/*
+// ====================================================================================================
+
 let isClick = false;
 
-const playScene = (name) => {
+const playScript = (json) => {
+  playScene(json, 'main');
+}
+
+const playScene = (script, name) => {
   return new Promise(async (resolve, reject) => {
     const scene = script[name];
+    console.log(scene)
     for (let s of scene) {
       switch (s.type) {
         case 'conv':
@@ -84,7 +92,7 @@ const waitUntilClick = (content) => {
   return new Promise(async (resolve, reject) => {
     let loop = setInterval(() => {
       if (isClick) {
-        printText(eval(`\`${content[0]}\``), content[1])
+        printText(eval(`\`${content[0]}\``), eval(`\`${content[1]}\``))
         isClick = false
         resolve()
         clearInterval(loop)
@@ -94,13 +102,14 @@ const waitUntilClick = (content) => {
 }
 
 const printText = (text, img) => {
-    if (img) logo.src = `https://rawcdn.githack.com/EntryJSers/chammuh_assets/master/assets/${img}.png`
-    ctx.clearRect(0, 430, canvas.width, canvas.height)
-    ctx.font = '24px Spoqa Han Sans'
-    ctx.fillStyle = 'white'
-    ctx.fillText(text, (canvas.width / 2) - (ctx.measureText(text).width / 2), 470)
+  if (img) logo.src = `https://rawcdn.githack.com/EntryJSers/chammuh_assets/master/assets/${img}.png`
+  ctx.clearRect(0, 430, canvas.width, canvas.height)
+  ctx.font = '24px Spoqa Han Sans'
+  ctx.fillStyle = 'white'
+  ctx.fillText(text, (canvas.width / 2) - (ctx.measureText(text).width / 2), 470)
 }
-*/
+
+// ====================================================================================================
 
 fetch('https://raw.githack.com/EntryJSers/chammuh/master/script.json')
   .then(res => res.json())
