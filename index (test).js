@@ -43,10 +43,10 @@ Swal.fire({
 
 let isClick = false;
 
-const playScene = (name) => {
+const playScene = async (name) => {
   console.log(name);
   const scene = script[name];
-  scene.forEach(s => {
+  for (let s in scene) {
     switch (s.type) {
       case 'conv':
         playConv(s.content);
@@ -61,12 +61,12 @@ const playScene = (name) => {
         alert('에러다 에러 예상치 못한 타입이다');
         break;
     }
-  });
+  }
 };
 
 const playConv = (content) => {
   console.log(content);
-  content.forEach(c => {
+  for (let c in content) {
     printText(eval(`\`${c[0]}\``), c[1]);
 
     let loop = setInterval(() => {
@@ -75,7 +75,7 @@ const playConv = (content) => {
         clearInterval(loop);
       }
     }, 50);
-  });
+  }
 }
 
 const printText = (text, img) => {
