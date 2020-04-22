@@ -5,12 +5,19 @@ const canvas = document.getElementById('game'),
 
 let nickname = undefined, response = new Array, script;
 
+/*
 httpRequest.onreadystatechange = (data) => {
   script = JSON.parse(data.target.response)
   playScene('main');
 }
 httpRequest.open('GET', 'https://raw.githack.com/EntryJSers/chammuh/master/script.json')
 httpRequest.send()
+*/
+
+fetch('./script.json')
+  .then(res => res.json())
+  .then(json => script = json)
+  .then(playScene('main'))
 
 confirm = (title, id, placeholder, func) => {
     Swal.fire({
