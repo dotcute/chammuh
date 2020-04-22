@@ -7,10 +7,17 @@ let lvl = 0,
     scripts,
     httpRequest = new XMLHttpRequest()
 
+/*
 httpRequest.onreadystatechange = (data) => {
     scripts = JSON.parse(data.target.response).story[0]
 }
 httpRequest.open('GET', 'https://rawcdn.githack.com/EntryJSers/chammuh_assets/932802ca3b542079c40d6be718257dfb2cdeadc2/scripts/script.json')
+httpRequest.send()
+*/
+httpRequest.onreadystatechange = (data) => {
+    scripts = JSON.parse(data.target.response)
+}
+httpRequest.open('GET', 'https://raw.githack.com/EntryJSers/chammuh/master/script.json')
 httpRequest.send()
 
 confirm = (title, id, placeholder, func) => {
@@ -42,16 +49,38 @@ Swal.fire({
     }
 })
 
-
-const say = () => {
-    let cases = ''
-    for (let i in scripts) {
-        cases += `case ${Number(i) + 1}:\n  printText(\`${scripts[i]}\`)\n  break\n`
+let cases = ''
+const say = (scene) => {
+    
+    for (let i = 0; i < scripts[scene].length; i++) {
+        console.log(i)
+        if (scripts[scene][i].type == 'conv') {
+            cases += `case ${Number(i) + 1}:\n  printText(\`${scripts[scene][i].content[0]}\`)\n  break\n`
+        }
+        if (scripts[scene][i].type == 'scene') {
+            say(scripts[scene][i].content)
+        }
+        /*
+        switch (scripts[scene][i].type) {
+            case 'conv':
+                cases += `case ${Number(i) + 1}:\n  printText(\`${scripts[scene][i].content}\`)\n  break\n`
+                break
+            case 'ques':
+              playQues(s.content, s.answer.contents, s.answer.scene)
+              break
+            case 'scene':
+                say(scripts[scene][i].content)
+                break
+            default:
+                console.error('에러다 에러 예상치 못한 타입이다')
+                break
+        }
+        */
     }
     eval(`switch (lvl) {\n${cases}}`)
 }
 const printText = (text) => {
-    logo.src = `https://entryjsers.github.io/chammuh_assets/img/${lvl}.png`
+    logo.src = `https://rawcdn.githack.com/EntryJSers/chammuh_assets/932802ca3b542079c40d6be718257dfb2cdeadc2/img/${lvl}.png`
     ctx.clearRect(0, 430, canvas.width, canvas.height)
     ctx.font = '24px Spoqa Han Sans'
     ctx.fillStyle = 'white'
@@ -66,5 +95,5 @@ logo.addEventListener('load', () => {
 }, false)
 canvas.addEventListener('click', () => {
     lvl += 1
-    say()
+    say('main')
 })

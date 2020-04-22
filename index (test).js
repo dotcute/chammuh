@@ -1,21 +1,15 @@
 const canvas = document.getElementById('game'),
   ctx = canvas.getContext('2d'),
   logo = new Image(),
-  httpRequest = new XMLHttpRequest();
+  httpRequest = new XMLHttpRequest()
 
-let nickname = undefined, response = new Array, script;
-
-httpRequest.onreadystatechange = (data) => {
-  script = JSON.parse(data.target.response)
-}
-httpRequest.open('GET', 'https://raw.githack.com/EntryJSers/chammuh/master/script.json')
-httpRequest.send()
+let nickname = undefined, response = new Array, script, lvl = 0
 
 confirm = (title, id, placeholder, func) => {
     Swal.fire({
         title: title,
         html:
-            `<input id="${id}" style="font-size: 1.2rem; border-radius: .3125em; padding: 1rem; border: 1px solid #eee" placeholder="${placeholder}">`,
+            `<input id="${id}" style="font-size: 1.2rem; border-radius: .3125em; padding: 1rem; border: 1px; solid #eee;" placeholder="${placeholder}">`,
         focusConfirm: false,
         confirmButtonText: '확인'
     }).then((result) => {
@@ -28,7 +22,7 @@ confirm = (title, id, placeholder, func) => {
 Swal.fire({
     title: '이름이 뭐야?',
     html:
-        `<input id="nameInput" style="font-size: 1.2rem; border-radius: .3125em; padding: 1rem; border: 1px solid #eee" placeholder="홍길동">`,
+        `<input id="nameInput" style="font-size: 1.2rem; border-radius: .3125em; padding: 1rem; border: 1px solid #eee;" placeholder="홍길동">`,
     focusConfirm: false,
     confirmButtonText: '확인'
 }).then((result) => {
@@ -41,58 +35,63 @@ Swal.fire({
 })
 
 
-let isClick = false;
+let isClick = false
 
 const playScene = (name) => {
-  alert('playScene 실행됨');
-  const scene = script[name];
+  let scene
+  httpRequest.onreadystatechange = (data) => {
+    scene = JSON.parse(data.target.response)[name]
+  }
+  httpRequest.open('GET', 'https://raw.githack.com/EntryJSers/chammuh/master/script.json')
+  httpRequest.send()
   scene.forEach(s => {
     switch (s.type) {
       case 'conv':
-        playConv(s.content);
-        break;
+        playConv(s.content)
+        break
       /*case 'ques':
-        playQues(s.content, s.answer.contents, s.answer.scene);
-        break;*/
+        playQues(s.content, s.answer.contents, s.answer.scene)
+        break*/
       case 'scene':
-        playScene(s.content);
-        break;
+        playScene(s.content)
+        break
       default:
-        alert('에러다 에러 예상치 못한 타입이다');
-        break;
+        console.error('에러다 에러 예상치 못한 타입이다')
+        break
     }
-  });
-};
+  })
+}
 
 const playConv = (content) => {
   content.forEach(c => {
     let loop = setInterval(() => {
       if (isClick) {
-        printText(eval(`\`${c[0]}\``), c[1]);
-        isClick = false;
-        clearInterval(loop);
+        printText(eval(`\`${c[0]}\``))
+        isClick = false
+        clearInterval(loop)
       }
-    }, 100);
-  });
+    }, 100)
+  })
 }
 
-const printText = (text, img) => {
-    logo.src = `./assets/${img}.png`
-    ctx.clearRect(0, 430, canvas.width, canvas.height)
-    ctx.font = '24px Spoqa Han Sans'
-    ctx.fillStyle = 'white'
-    ctx.fillText(text, (canvas.width / 2) - (ctx.measureText(text).width / 2), 470)
+const printText = (text) => {
+  logo.src = `https://rawcdn.githack.com/EntryJSers/chammuh_assets/932802ca3b542079c40d6be718257dfb2cdeadc2/img/${lvl}.png`
+  ctx.clearRect(0, 430, canvas.width, canvas.height)
+  ctx.font = '24px Spoqa Han Sans'
+  ctx.fillStyle = 'white'
+  ctx.fillText(text, (canvas.width / 2) - (ctx.measureText(text).width / 2), 470)
 }
 
 window.addEventListener('load', () => {
-  alert('window.addEventListener load 실행됨');
-  playScene('main');
-});
+  console.log('window.addEventListener load 실행됨')
+  playScene('main')
+})
 
 logo.addEventListener('load', () => {
   ctx.drawImage(logo, 0, 0, 960, 420)
-}, false);
+}, false)
 
 canvas.addEventListener('click', () => {
-  isClick = true;
-});
+  lvl++
+  isClick = true
+})
