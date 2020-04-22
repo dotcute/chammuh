@@ -83,7 +83,7 @@ const play = (scene) => {
   eval(`switch (lvl) {\n${cases}}`)
 }
 const printText = (text, img) => {
-    logo.src = `https://rawcdn.githack.com/EntryJSers/chammuh_assets/932802ca3b542079c40d6be718257dfb2cdeadc2/assets/${img}.png`
+    logo.src = `https://rawcdn.githack.com/EntryJSers/chammuh_assets/master/assets/${img}.png`
     ctx.clearRect(0, 430, canvas.width, canvas.height)
     ctx.font = '24px Spoqa Han Sans'
     ctx.fillStyle = 'white'
