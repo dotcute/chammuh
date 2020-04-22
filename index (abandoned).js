@@ -74,10 +74,10 @@ const playConv = async (content) => {
   }
 }
 
-const waitUntilClick = (content) => {
+const waitUntilClick = async (content) => {
   console.log('loop')
   if (isClick == false) {
-    setTimeout(waitUntilClick, 100, content);
+    await setTimeout(waitUntilClick, 100, content);
   }
   else printText(eval(`\`${content[0]}\``), content[1]);
 }
