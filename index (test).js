@@ -57,8 +57,8 @@ const play = (scene) => {
     console.log(i)
     if (scripts[scene][i].type == 'conv') {
       for (let j = 0; j < scripts[scene][i].content.length; j++) {
-        printText(scripts[scene][i].content[j][0], scripts[scene][i].content[j][1])
-        cases += `case ${Number(i) + 1}:\n  printText(\`${scripts[scene][i].content[j][0]}\`, \`${scripts[scene][i].content[j][1]}\`)\n  break\n`
+        // printText(scripts[scene][i].content[j][0], scripts[scene][i].content[j][1])
+        cases += `case ${Number(i) + 1}:\n  printText(\`${scripts[scene][i].content[j][0]}\`, \'${scripts[scene][i].content[j][1]}\')\n  break\n`
       }
     }
     if (scripts[scene][i].type == 'scene') {
