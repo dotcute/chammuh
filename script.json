@@ -3,6 +3,10 @@
     {
       "type": "scene",
       "content": "story"
+    },
+    {
+      "type": "scene",
+      "content": "wip"
     }
   ],
   "story": [
@@ -14,6 +18,14 @@
         [ "다 깎아주겠어...", "chammuh_evil" ],
         [ "빨리 앉으라니까!" ],
         [ "앉아버렸다...", "exon_caught" ]
+      ]
+    }
+  ],
+  "wip": [
+    {
+      "type": "conv",
+      "content": [
+        [ "(WIP) 여기까지! 아직 미완성작인 참연시: 참머바버 를 업그레이드 시키고 싶다면\nEntry JSers 참연시 팀에 참여하세요!\n가 아니라 그냥 아무것도 하지 마세요!"]
       ]
     }
   ]
