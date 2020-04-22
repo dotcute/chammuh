@@ -91,6 +91,7 @@ const waitUntilClick = async (content) => {
 }
 */
 
+/*
 const waitUntilClick = async (content) => {
   return new Promise(async (resolve, reject) => {
     console.log('loop')
@@ -101,6 +102,22 @@ const waitUntilClick = async (content) => {
       printText(eval(`\`${content[0]}\``), content[1]);
       resolve()
     }
+  })
+}
+*/
+
+const waitUntilClick = async (content) => {
+  return new Promise(async (resolve, reject) => {
+    let loop = setInterval(() => {
+      console.log('loop')
+      
+      if (isClick) {
+        printText(eval(`\`${content[0]}\``), content[1])
+        isClick = false
+        resolve()
+        clearInterval(loop)
+      }
+    }, 100)
   })
 }
 
