@@ -44,6 +44,7 @@ Swal.fire({
 let isClick = false;
 
 const playScene = (name) => {
+  console.log(name);
   const scene = script[name];
   scene.forEach(s => {
     switch (s.type) {
@@ -64,9 +65,10 @@ const playScene = (name) => {
 };
 
 const playConv = (content) => {
+  console.log(content);
   content.forEach(c => {
     printText(eval(`\`${c[0]}\``), c[1]);
-    
+
     let loop = setInterval(() => {
       if (isClick) {
         isClick = false;
