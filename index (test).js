@@ -38,13 +38,9 @@ Swal.fire({
 let isClick = false
 
 const playScene = (name) => {
-  let scene
-  httpRequest.onreadystatechange = (data) => {
-    scene = JSON.parse(data.target.response)[name]
-  }
-  httpRequest.open('GET', 'https://raw.githack.com/EntryJSers/chammuh/master/script.json')
-  httpRequest.send()
-  scene.forEach(s => {
+  console.log(name);
+  const scene = script[name];
+  for (let s of scene) {
     switch (s.type) {
       case 'conv':
         playConv(s.content)
@@ -59,19 +55,21 @@ const playScene = (name) => {
         console.error('에러다 에러 예상치 못한 타입이다')
         break
     }
-  })
-}
+  }
+};
 
 const playConv = (content) => {
-  content.forEach(c => {
+  console.log(content);
+  for (let c of content) {
+    printText(eval(`\`${c[0]}\``), c[1]);
+
     let loop = setInterval(() => {
       if (isClick) {
-        printText(eval(`\`${c[0]}\``))
-        isClick = false
-        clearInterval(loop)
+        isClick = false;
+        clearInterval(loop);
       }
-    }, 100)
-  })
+    }, 50);
+  }
 }
 
 const printText = (text) => {
@@ -83,9 +81,8 @@ const printText = (text) => {
 }
 
 window.addEventListener('load', () => {
-  console.log('window.addEventListener load 실행됨')
-  playScene('main')
-})
+  playScene('main');
+});
 
 logo.addEventListener('load', () => {
   ctx.drawImage(logo, 0, 0, 960, 420)
