@@ -133,8 +133,10 @@ const printText = (text, img) => {
 
 fetch('https://raw.githack.com/EntryJSers/chammuh/master/script.json')
   .then(res => res.json())
-  .then(json => script = json)
-  .then(playScene('main'))
+  .then(json => {
+    script = json
+    playScene('main')
+  })
 
 window.addEventListener('load', () => {
   printText('클릭하여 시작..', 'title')
