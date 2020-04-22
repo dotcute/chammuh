@@ -46,13 +46,13 @@ const playScene = (name) => {
           await playConv(s.content);
           break;
         case 'ques':
-          await playQues(s.content, s.answer.contents, s.answer.scene);
+          await playQues(s.content, s.answer);
           break;
         case 'scene':
           await playScene(s.content);
           break;
         default:
-          alert('에러다 에러 예상치 못한 타입이다');
+          alert('에러 발생: 정의되지 않은 type 값입니다.');
           break;
       }
     }
@@ -70,7 +70,7 @@ const playConv = (content) => {
   })
 }
 
-const playQues = (content, answer, scene) => {
+const playQues = (content, answer) => {
   return new Promise(async (resolve, reject) => {
     for (let c of content) {
       console.log(c)
