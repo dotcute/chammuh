@@ -63,6 +63,7 @@ const playScene = (name) => {
           break;
       }
     }
+    resolve()
   })
 };
 
@@ -72,6 +73,7 @@ const playConv = (content) => {
       console.log(c)
       await waitUntilClick(c);
     }
+    resolve()
   })
 }
 
@@ -82,6 +84,7 @@ const waitUntilClick = async (content) => {
       await setTimeout(waitUntilClick, 100, content);
     }
     else printText(eval(`\`${content[0]}\``), content[1]);
+    resolve()
   })
 }
 
