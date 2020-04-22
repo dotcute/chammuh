@@ -43,10 +43,10 @@ Swal.fire({
 
 let isClick = false;
 
-const playScene = async (name) => {
+const playScene = (name) => {
   console.log(name);
   const scene = script[name];
-  for (let s in scene) {
+  for (let s of scene) {
     switch (s.type) {
       case 'conv':
         playConv(s.content);
@@ -66,7 +66,7 @@ const playScene = async (name) => {
 
 const playConv = (content) => {
   console.log(content);
-  for (let c in content) {
+  for (let c of content) {
     printText(eval(`\`${c[0]}\``), c[1]);
 
     let loop = setInterval(() => {
