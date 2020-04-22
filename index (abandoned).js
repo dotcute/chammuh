@@ -69,6 +69,7 @@ const playConv = (content) => {
   console.log(content);
   
   for (let c of content) {
+    console.log(c)
     waitUntilClick(c);
   }
 }
