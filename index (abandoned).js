@@ -74,6 +74,7 @@ const playConv = (content) => {
 }
 
 const waitUntilClick = (content) => {
+  console.log('loop')
   if (isClick == false) {
     setTimeout(waitUntilClick, 100);
   }
@@ -81,7 +82,7 @@ const waitUntilClick = (content) => {
 }
 
 const printText = (text, img) => {
-    logo.src = `./assets/${img}.png`
+    logo.src = `https://rawcdn.githack.com/EntryJSers/chammuh_assets/master/assets/${img}.png`
     ctx.clearRect(0, 430, canvas.width, canvas.height)
     ctx.font = '24px Spoqa Han Sans'
     ctx.fillStyle = 'white'
