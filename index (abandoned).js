@@ -78,41 +78,10 @@ const playConv = (content) => {
     resolve()
   })
 }
-/*
-const waitUntilClick = async (content) => {
-  return new Promise(async (resolve, reject) => {
-    console.log('loop')
-    if (isClick == false) {
-      await setTimeout(waitUntilClick, 100, content);
-    }
-    else {
-      printText(eval(`\`${content[0]}\``), content[1]);
-      resolve()
-    }
-  })
-}
-*/
 
-/*
-const waitUntilClick = async (content) => {
-  return new Promise(async (resolve, reject) => {
-    console.log('loop')
-    if (isClick == false) {
-      resolve(await waitUntilClick(content))
-    }
-    else {
-      printText(eval(`\`${content[0]}\``), content[1]);
-      resolve()
-    }
-  })
-}
-*/
-
-const waitUntilClick = async (content) => {
+const waitUntilClick = (content) => {
   return new Promise(async (resolve, reject) => {
     let loop = setInterval(() => {
-      console.log('loop')
-      
       if (isClick) {
         printText(eval(`\`${content[0]}\``), content[1])
         isClick = false
@@ -124,7 +93,7 @@ const waitUntilClick = async (content) => {
 }
 
 const printText = (text, img) => {
-    logo.src = `https://rawcdn.githack.com/EntryJSers/chammuh_assets/master/assets/${img}.png`
+    if (img) logo.src = `https://rawcdn.githack.com/EntryJSers/chammuh_assets/master/assets/${img}.png`
     ctx.clearRect(0, 430, canvas.width, canvas.height)
     ctx.font = '24px Spoqa Han Sans'
     ctx.fillStyle = 'white'

@@ -10,9 +10,9 @@
       "type": "conv",
       "content": [
         [ "안녕 ${nickname}! 머리 깎으러 왔구나!", "chammuh_normal" ],
-        [ "빨리 앉아!", "chammuh_normal" ],
+        [ "빨리 앉아!" ],
         [ "다 깎아주겠어...", "chammuh_evil" ],
-        [ "빨리 앉으라니까!", "chammuh_evil" ],
+        [ "빨리 앉으라니까!" ],
         [ "앉아버렸다...", "exon_caught" ]
       ]
     }
