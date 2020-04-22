@@ -20,7 +20,7 @@ httpRequest.onreadystatechange = (data) => {
   play('main')
 }
 httpRequest.open('GET', 'https://raw.githack.com/EntryJSers/chammuh/master/script.json')
-httpRequest.send()
+// httpRequest.send()
 
 confirm = (title, id, placeholder, func) => {
     Swal.fire({
