@@ -65,7 +65,7 @@ const playScene = async (name) => {
   }
 };
 
-const playConv = (content) => {
+const playConv = async (content) => {
   console.log(content);
   
   for (let c of content) {
