@@ -54,9 +54,9 @@ const playScene = (name) => {
         case 'conv':
           await playConv(s.content);
           break;
-        /*case 'ques':
-          playQues(s.content, s.answer.contents, s.answer.scene);
-          break;*/
+        case 'ques':
+          await playQues(s.content, s.answer.contents, s.answer.scene);
+          break;
         case 'scene':
           await playScene(s.content);
           break;
@@ -70,6 +70,15 @@ const playScene = (name) => {
 };
 
 const playConv = (content) => {
+  return new Promise(async (resolve, reject) => {
+    for (let c of content) {
+      console.log(c)
+      await waitUntilClick(c);
+    }
+    resolve()
+  })
+}
+const playQues = (content, answer, scene) => {
   return new Promise(async (resolve, reject) => {
     for (let c of content) {
       console.log(c)
