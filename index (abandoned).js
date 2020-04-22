@@ -91,6 +91,7 @@ const printText = (text, img) => {
 }
 
 window.addEventListener('load', () => {
+  printText('클릭하여 시작..', 'title')
 });
 
 logo.addEventListener('load', () => {

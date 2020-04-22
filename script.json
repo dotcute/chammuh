@@ -1,12 +1,6 @@
 {
   "main": [
     {
-      "type": "conv",
-      "content": [
-        [ "클릭해서 시작...", "title" ]
-      ]
-    },
-    {
       "type": "scene",
       "content": "story"
     }
