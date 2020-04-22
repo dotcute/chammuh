@@ -68,15 +68,15 @@ const playConv = (content) => {
   console.log(content);
   
   for (let c of content) {
-    printText(eval(`\`${c[0]}\``), c[1]);
-
-    let loop = setInterval(() => {
-      if (isClick) {
-        isClick = false;
-        clearInterval(loop);
-      }
-    }, 50);
+    waitUntilClick(c);
   }
+}
+
+const waitUntilClick = (content) => {
+  if (isClick == false) {
+    setTimeout(waitUntilClick, 100);
+  }
+  else printText(eval(`\`${content[0]}\``), content[1]);
 }
 
 const printText = (text, img) => {
