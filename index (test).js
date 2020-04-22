@@ -65,13 +65,14 @@ const playScene = (name) => {
 
 const playConv = (content) => {
   content.forEach(c => {
+    printText(eval(`\`${c[0]}\``), c[1]);
+    
     let loop = setInterval(() => {
       if (isClick) {
-        printText(eval(`\`${c[0]}\``), c[1]);
         isClick = false;
         clearInterval(loop);
       }
-    }, 100);
+    }, 50);
   });
 }
 
