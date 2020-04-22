@@ -9,24 +9,33 @@
       "content": "wip"
     }
   ],
-  "story": [
+
+  "1-1": [
+    {
+      "type": "conv",
+      "content": [
+        [ "참머다 참머", "chammuh_normal" ],
+        [ "그녀는 여기 이 미용실 사장님의 딸이다." ]
+      ]
+    },
     {
       "type": "conv",
       "content": [
         [ "안녕 ${nickname}! 머리 깎으러 왔구나!", "chammuh_normal" ],
         [ "빨리 앉아!" ],
-        [ "다 깎아주겠어...", "chammuh_evil" ],
+        [ "싹 다 깎아주겠어...", "chammuh_evil" ],
         [ "빨리 앉으라니까!" ],
-        [ "앉아버렸다...", "exon_caught" ]
+        [ "아.. 앉아버렸다...", "exon_caught" ]
       ]
     }
   ],
+
   "wip": [
     {
       "type": "conv",
       "content": [
         [ "여기까지!", "title" ],
-        [ "미완성입니다." ]
+        [ "참연시 - 참머barber 는 아직 미완성 작품입니다." ]
       ]
     }
   ]
