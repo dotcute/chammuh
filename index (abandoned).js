@@ -14,11 +14,6 @@ httpRequest.open('GET', 'https://raw.githack.com/EntryJSers/chammuh/master/scrip
 httpRequest.send()
 */
 
-fetch('./script.json')
-  .then(res => res.json())
-  .then(json => script = json)
-  .then(playScene('main'))
-
 confirm = (title, id, placeholder, func) => {
     Swal.fire({
         title: title,
@@ -135,6 +130,11 @@ const printText = (text, img) => {
     ctx.fillStyle = 'white'
     ctx.fillText(text, (canvas.width / 2) - (ctx.measureText(text).width / 2), 470)
 }
+
+fetch('https://raw.githack.com/EntryJSers/chammuh/master/script.json')
+  .then(res => res.json())
+  .then(json => script = json)
+  .then(playScene('main'))
 
 window.addEventListener('load', () => {
   printText('클릭하여 시작..', 'title')
