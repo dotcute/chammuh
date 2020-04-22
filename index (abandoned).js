@@ -83,8 +83,10 @@ const waitUntilClick = async (content) => {
     if (isClick == false) {
       await setTimeout(waitUntilClick, 100, content);
     }
-    else printText(eval(`\`${content[0]}\``), content[1]);
-    resolve()
+    else {
+      printText(eval(`\`${content[0]}\``), content[1]);
+      resolve()
+    }
   })
 }
 
