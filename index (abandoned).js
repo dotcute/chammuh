@@ -76,12 +76,26 @@ const playConv = (content) => {
     resolve()
   })
 }
-
+/*
 const waitUntilClick = async (content) => {
   return new Promise(async (resolve, reject) => {
     console.log('loop')
     if (isClick == false) {
       await setTimeout(waitUntilClick, 100, content);
+    }
+    else {
+      printText(eval(`\`${content[0]}\``), content[1]);
+      resolve()
+    }
+  })
+}
+*/
+
+const waitUntilClick = async (content) => {
+  return new Promise(async (resolve, reject) => {
+    console.log('loop')
+    if (isClick == false) {
+      resolve(await waitUntilClick(content))
     }
     else {
       printText(eval(`\`${content[0]}\``), content[1]);
