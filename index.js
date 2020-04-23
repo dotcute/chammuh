@@ -48,7 +48,10 @@ const playScene = (script, name) => {
   return new Promise(async (resolve, reject) => {
     const scene = script[name];
     console.log(scene)
+
     for (let s of scene) {
+      if (s.trigger && !eval(s.trigger)) continue
+
       switch (s.type) {
         case 'conv':
           await playConv(s.content);
@@ -63,6 +66,7 @@ const playScene = (script, name) => {
           alert('에러 발생: 정의되지 않은 type 값입니다.');
           break;
       }
+      if (s.script) eval(s.script)
     }
     resolve()
   })
