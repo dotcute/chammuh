@@ -97,7 +97,7 @@ const waitUntilClick = (content) => {
   return new Promise(async (resolve, reject) => {
     let loop = setInterval(() => {
       if (isClick) {
-        printText(eval(`\`${content[0]}\``), eval(`\`${content[1]}\``))
+        printText(eval(`\`${content[0]}\``), content[1])
         isClick = false
         resolve()
         clearInterval(loop)
