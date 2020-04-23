@@ -1,0 +1,24 @@
+{
+  "main": [
+    {
+      "type": "scene",
+      "content": "talk"
+    },
+    {
+      "type": "conv",
+      "content": ["변수값이 10 이상이야!"]
+    }
+  ],
+  "talk": [
+    {
+      "type": "conv",
+      "script": "count += 1",
+      "content": ["변수값이 ${count}야.", "1을 더할게."]
+    },
+    {
+      "type": "scene",
+      "trigger": "count < 10",
+      "content": "talk"
+    }
+  ]
+}

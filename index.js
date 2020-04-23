@@ -47,9 +47,10 @@ const playScript = (json) => {
 const playScene = (script, name) => {
   return new Promise(async (resolve, reject) => {
     const scene = script[name];
-    console.log(scene)
+    if (!scene) alert(`장면 '${name}' 이 존재하지 않습니다.`)
 
     for (let s of scene) {
+
       if (s.trigger && !eval(s.trigger)) continue
 
       switch (s.type) {
@@ -63,7 +64,7 @@ const playScene = (script, name) => {
           await playScene(script, s.content);
           break;
         default:
-          alert('에러 발생: 정의되지 않은 type 값입니다.');
+          alert('정의되지 않은 type 값입니다.');
           break;
       }
       if (s.script) eval(s.script)
@@ -115,7 +116,9 @@ const printText = (text, img) => {
 
 // ====================================================================================================
 
-fetch('https://raw.githack.com/EntryJSers/chammuh/master/script.json')
+let count = 0
+
+fetch('https://raw.githack.com/EntryJSers/chammuh/master/test.json')
   .then(res => res.json())
   .then(json => playScript(json))
 
