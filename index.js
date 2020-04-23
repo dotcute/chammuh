@@ -76,14 +76,19 @@ const playScene = (script, name) => {
 
 const playConv = (content) => {
   return new Promise(async (resolve, reject) => {
-    for (let c of content) await waitUntilClick(c);
+    for (let c of content) {
+      await waitUntilClick(c);
+      printText(eval(`\`${content[0]}\``), content[1]);
+    }
     resolve();
   });
 };
 
 const playQues = (content, answer) => {
   return new Promise(async (resolve, reject) => {
-    for (let c of content) await waitUntilClick(c);
+    for (let c of content) {
+      await waitUntilClick(c);
+    }
     resolve();
   });
 };
@@ -92,7 +97,6 @@ const waitUntilClick = (content) => {
   return new Promise(async (resolve, reject) => {
     let loop = setInterval(() => {
       if (isClick) {
-        printText(eval(`\`${content[0]}\``), content[1])
         isClick = false;
         resolve();
         clearInterval(loop);
@@ -111,13 +115,6 @@ const printText = (text, img) => {
 
 // ====================================================================================================
 
-let count = 0
-
-// https://raw.githack.com/EntryJSers/chammuh/master/scripts/script.json
-fetch('./scripts/script.json')
-  .then(res => res.json())
-  .then(json => playScript(json))
-
 window.addEventListener('load', () => {
   printText('클릭하여 시작...', 'title')
 });
@@ -129,3 +126,7 @@ image.addEventListener('load', () => {
 canvas.addEventListener('click', () => {
   isClick = true;
 });
+
+// ====================================================================================================
+
+fetch('./scripts/script.json').then(res => playScript(await res.json()));
