@@ -3,7 +3,7 @@ const canvas = document.getElementById('game'),
   image = new Image(),
   httpRequest = new XMLHttpRequest();
 
-let nickname = undefined, response = new Array;
+let nickname = '';
 
 // ====================================================================================================
 
@@ -77,8 +77,8 @@ const playScene = (script, name) => {
 const playConv = (content) => {
   return new Promise(async (resolve, reject) => {
     for (let c of content) {
-      await waitUntilClick(c);
-      printText(eval(`\`${content[0]}\``), content[1]);
+      await waitUntilClick();
+      show(eval(`\`${c[0]}\``), c[1]);
     }
     resolve();
   });
@@ -93,7 +93,7 @@ const playQues = (content, answer) => {
   });
 };
 
-const waitUntilClick = (content) => {
+const waitUntilClick = () => {
   return new Promise(async (resolve, reject) => {
     let loop = setInterval(() => {
       if (isClick) {
@@ -105,7 +105,7 @@ const waitUntilClick = (content) => {
   });
 };
 
-const printText = (text, img) => {
+const show = (text, img) => {
   if (img) image.src = `https://rawcdn.githack.com/EntryJSers/chammuh_assets/master/assets/${img}.png`
   ctx.clearRect(0, 430, canvas.width, canvas.height)
   ctx.font = '24px Spoqa Han Sans'
@@ -116,11 +116,11 @@ const printText = (text, img) => {
 // ====================================================================================================
 
 window.addEventListener('load', () => {
-  printText('클릭하여 시작...', 'title')
+  show('클릭하여 시작...', 'title');
 });
 
 image.addEventListener('load', () => {
-  ctx.drawImage(image, 0, 0, 960, 420)
+  ctx.drawImage(image, 0, 0, 960, 420);
 }, false);
 
 canvas.addEventListener('click', () => {
