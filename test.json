@@ -2,7 +2,9 @@
   "main": [
     {
       "type": "conv",
-      "content": ["변수값에 1을 계속 더해볼거야.", "chammuh_normal"]
+      "content": [
+        ["변수값에 1을 계속 더해볼거야.", "chammuh_normal"]
+      ]
     },
     {
       "type": "scene",
@@ -10,14 +12,18 @@
     },
     {
       "type": "conv",
-      "content": ["변수값이 10 이상이야!"]
+      "content": [
+        ["변수값이 10 이상이야!"]
+      ]
     }
   ],
   "talk": [
     {
       "type": "conv",
       "script": "count += 1",
-      "content": ["변수값이 ${count}야.", "1을 더할게."]
+      "content": [
+        ["변수값이 ${count}야.", "1을 더할게."]
+      ]
     },
     {
       "type": "scene",
