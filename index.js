@@ -7,20 +7,24 @@ let nickname = '';
 
 // ====================================================================================================
 
-confirm = (title, id, placeholder, func) => {
-    Swal.fire({
-        title: title,
-        html:
-            `<input id="${id}" style="font-size: 1.2rem; border-radius: .3125em; padding: 1rem; border: 1px solid #eee" placeholder="${placeholder}">`,
-        focusConfirm: false,
-        confirmButtonText: '확인'
-    }).then((result) => {
-        if (result.value) {
-            func(id)
-        }
-    })
+const confirm = (title, id, placeholder, func) => {
+  Swal.fire({
+    title: title,
+    html:
+      `<input id="${id}" style="font-size: 1.2rem; border-radius: .3125em; padding: 1rem; border: 1px solid #eee" placeholder="${placeholder}">`,
+    focusConfirm: false,
+    confirmButtonText: '확인'
+  }).then((result) => {
+    if (result.value) {
+      func(id)
+    }
+  });
 }
 
+confirm('이름이 뭐야?', 'nameInput', '홍길동', (id) => {
+  nickname = document.getElementById(id).value;
+});
+/*
 Swal.fire({
     title: '이름이 뭐야?',
     html:
@@ -35,6 +39,7 @@ Swal.fire({
         window.location.reload()
     }
 })
+*/
 
 // ====================================================================================================
 
