@@ -16,30 +16,17 @@ const confirm = (title, id, placeholder, func) => {
     confirmButtonText: '확인'
   }).then((result) => {
     if (result.value) {
-      func(id)
+      func(id);
+    } else {
+      window.location.reload();
     }
   });
 }
 
 confirm('이름이 뭐야?', 'nameInput', '홍길동', (id) => {
   nickname = document.getElementById(id).value;
+  if (nickname == '') window.location.reload();
 });
-/*
-Swal.fire({
-    title: '이름이 뭐야?',
-    html:
-        `<input id="nameInput" style="font-size: 1.2rem; border-radius: .3125em; padding: 1rem; border: 1px solid #eee" placeholder="홍길동">`,
-    focusConfirm: false,
-    confirmButtonText: '확인'
-}).then((result) => {
-    if (result.value) {
-        nickname = document.getElementById('nameInput').value
-        if (nickname == '') window.location.reload()
-    } else {
-        window.location.reload()
-    }
-})
-*/
 
 // ====================================================================================================
 
