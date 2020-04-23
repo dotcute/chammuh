@@ -1,6 +1,10 @@
 {
   "main": [
     {
+      "type": "conv",
+      "content": ["변수값에 1을 계속 더해볼거야.", "chammuh_normal"]
+    },
+    {
       "type": "scene",
       "content": "talk"
     },
