@@ -123,7 +123,7 @@ fetch('https://raw.githack.com/EntryJSers/chammuh/master/test.json')
   .then(json => playScript(json))
 
 window.addEventListener('load', () => {
-  printText('클릭하여 시작..', 'title')
+  printText('클릭하여 시작...', 'title')
 });
 
 logo.addEventListener('load', () => {
