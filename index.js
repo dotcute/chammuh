@@ -118,7 +118,7 @@ const printText = (text, img) => {
 
 let count = 0
 
-fetch('https://raw.githack.com/EntryJSers/chammuh/master/test.json')
+fetch('https://raw.githack.com/EntryJSers/chammuh/master/scripts/test.json')
   .then(res => res.json())
   .then(json => playScript(json))
 
