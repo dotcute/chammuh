@@ -129,4 +129,4 @@ canvas.addEventListener('click', () => {
 
 // ====================================================================================================
 
-fetch('./scripts/script.json').then(res => playScript(await res.json()));
+fetch('./scripts/script.json').then(async res => playScript(await res.json()));
