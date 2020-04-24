@@ -125,6 +125,8 @@ const show = (text, img, smooth=true) => {
           ctx.fillStyle = '#658EFF';
           ctx.strokeStyle = 'white';
           ctx.fillRect(20, 450, 100, 40);
+          ctx.strokeRect(20, 450, 100, 40);
+          ctx.fillText(talker, 20, 450);
         }
         await waitMillisecs(33);
       }
