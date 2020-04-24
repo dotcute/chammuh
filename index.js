@@ -97,10 +97,14 @@ const waitUntilClick = () => {
 
 const show = (text, img) => {
   if (img) image.src = `./assets/${img}.png`
-  ctx.clearRect(0, 430, canvas.width, canvas.height)
+
   ctx.font = '24px Spoqa Han Sans'
   ctx.fillStyle = 'white'
-  ctx.fillText(text, (canvas.width / 2) - (ctx.measureText(text).width / 2), 470)
+
+  ctx.clearRect(0, 430, canvas.width, canvas.height)
+  for (let i = 1; i <= text.length; i++) {
+    ctx.fillText(text.slice(0, i), (canvas.width / 2) - (ctx.measureText(text).width / 2), 470);
+  }
 }
 
 // ====================================================================================================
