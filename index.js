@@ -113,34 +113,35 @@ const show = (text, img, smooth=true) => {
     }
 
     ctx.font = '24px Spoqa Han Sans'
+    ctx.fillStyle = 'white'
+    ctx.strokeStyle = 'white'
 
     if (smooth) {
       for (let i = 1; i <= text.length; i++) {
         ctx.clearRect(0, 430, canvas.width, canvas.height);
+        if (talker) showTalker(talker);
 
         ctx.fillStyle = 'white'
         ctx.fillText(text.slice(0, i), (canvas.width / 2) - (ctx.measureText(text).width / 2), 470);
 
-        if (talker) {
-          ctx.strokeStyle = 'white';
-          ctx.lineWidth = 5;
-          ctx.strokeRect(40, 440, ctx.measureText(talker).width + 15, 40);
-
-          ctx.fillStyle = 'white';
-          ctx.fillText(talker, 48, 468);
-        }
         await waitMillisecs(33);
       }
     } else {
       ctx.clearRect(0, 430, canvas.width, canvas.height);
-      if (talker) ctx.fillRect(40, 480, 100, 40);
+      if (talker) showTalker(talker);
 
-      ctx.fillStyle = 'white'
       ctx.fillText(text, (canvas.width / 2) - (ctx.measureText(text).width / 2), 470);
     }
     resolve();
   });
   
+}
+
+const showTalker = (name) => {
+  ctx.lineWidth = 5;
+  ctx.strokeRect(40, 440, ctx.measureText(name).width + 15, 40);
+
+  ctx.fillText(name, 48, 468);
 }
 
 // ====================================================================================================
