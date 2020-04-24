@@ -110,7 +110,7 @@ const show = async (text, img) => {
   for (let i = 1; i <= text.length; i++) {
     ctx.clearRect(0, 430, canvas.width, canvas.height)
     ctx.fillText(text.slice(0, i), (canvas.width / 2) - (ctx.measureText(text).width / 2), 470);
-    await waitMillisecs(50);
+    await waitMillisecs(33);
   }
 }
 
