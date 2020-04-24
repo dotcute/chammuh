@@ -23,10 +23,12 @@ const confirm = (title, id, placeholder, func) => {
   });
 }
 
+/*
 confirm('이름이 뭐야?', 'nameInput', '홍길동', (id) => {
   nickname = document.getElementById(id).value;
   if (nickname == '') window.location.reload();
 });
+*/
 
 // ====================================================================================================
 
@@ -147,7 +149,7 @@ const showTalker = (name) => {
 // ====================================================================================================
 
 window.addEventListener('load', () => {
-  show('클릭하여 시작...', 'title', false);
+  // show('클릭하여 시작...', 'title', false);
 });
 
 image.addEventListener('load', () => {

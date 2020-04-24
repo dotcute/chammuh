@@ -2,9 +2,29 @@
   "main": [
     {
       "type": "scene",
+      "name": "name_confirm"
+    },
+    {
+      "type": "scene",
       "name": "1-등굣길"
     }
   ],
+
+  "name_confirm": [
+    {
+      "type": "conv",
+      "contents": [
+        ["클릭하여 시작...", "title"]
+      ],
+      "scripts":
+        "confirm('이름이 뭐야?', 'nameInput', '홍길동', (id) => { nickname = document.getElementById(id).value; });"
+    },
+    {
+      "type": "scene",
+      "trigger": "nickname == '참머'",
+      "name": "name_confirm"
+    }
+  ]
 
   "1-등굣길": [
     {
