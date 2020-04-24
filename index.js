@@ -101,19 +101,29 @@ const waitMillisecs = (ms) => {
   });
 }
 
-const show = (text, talker, img, smooth=true) => {
+const show = (text, img, smooth=true) => {
   return new Promise(async (resolve, reject) => {
     if (img) image.src = `./assets/${img}.png`
 
+    let talker = undefined;
+    if (text.split(': ').length > 1) {
+      const arr = text.split(': ');
+      talker = arr.shift();
+      text = arr.join(': ');
+    }
+
     ctx.font = '24px Spoqa Han Sans'
     ctx.fillStyle = 'white'
-    ctx.strokeStyle = '#658EFF'
 
     if (smooth) {
       for (let i = 1; i <= text.length; i++) {
         ctx.clearRect(0, 430, canvas.width, canvas.height);
-        if (talker) ctx.fillRect(40, 480, 100, 40);
         ctx.fillText(text.slice(0, i), (canvas.width / 2) - (ctx.measureText(text).width / 2), 470);
+
+        if (talker) {
+          ctx.fillRect(20, 450, 100, 40);
+        }
+
         await waitMillisecs(33);
       }
     } else {
