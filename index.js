@@ -71,8 +71,8 @@ const playScene = (script, name) => {
 const playConv = (contents) => {
   return new Promise(async (resolve, reject) => {
     for (let content of contents) {
-      await waitUntilClick();
       await show(eval(`\`${content[0]}\``), content[1]);
+      await waitUntilClick();
     }
     resolve();
   });
