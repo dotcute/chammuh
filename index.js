@@ -70,7 +70,7 @@ const playConv = (contents) => {
   return new Promise(async (resolve, reject) => {
     for (let content of contents) {
       await waitUntilClick();
-      show(eval(`\`${content[0]}\``), content[1]);
+      await show(eval(`\`${content[0]}\``), content[1]);
     }
     resolve();
   });
@@ -101,17 +101,22 @@ const waitMillisecs = (ms) => {
   });
 }
 
-const show = (text, img) => {
+const show = (text, img, smooth=true) => {
   return new Promise(async (resolve, reject) => {
     if (img) image.src = `./assets/${img}.png`
 
     ctx.font = '24px Spoqa Han Sans'
     ctx.fillStyle = 'white'
 
-    for (let i = 1; i <= text.length; i++) {
-      ctx.clearRect(0, 430, canvas.width, canvas.height)
-      ctx.fillText(text.slice(0, i), (canvas.width / 2) - (ctx.measureText(text).width / 2), 470);
-      await waitMillisecs(33);
+    if (smooth) {
+      for (let i = 1; i <= text.length; i++) {
+        ctx.clearRect(0, 430, canvas.width, canvas.height);
+        ctx.fillText(text.slice(0, i), (canvas.width / 2) - (ctx.measureText(text).width / 2), 470);
+        await waitMillisecs(33);
+      }
+    } else {
+      ctx.clearRect(0, 430, canvas.width, canvas.height);
+      ctx.fillText(text, (canvas.width / 2) - (ctx.measureText(text).width / 2), 470);
     }
     resolve();
   });
@@ -121,7 +126,7 @@ const show = (text, img) => {
 // ====================================================================================================
 
 window.addEventListener('load', () => {
-  show('클릭하여 시작...', 'title');
+  show('클릭하여 시작...', 'title', false);
 });
 
 image.addEventListener('load', () => {
