@@ -124,7 +124,7 @@ const show = (text, img, smooth=true) => {
         if (talker) {
           ctx.strokeStyle = 'white';
           ctx.lineWidth = 5;
-          ctx.strokeRect(40, 440, ctx.measureText(talker).width + 20, 40);
+          ctx.strokeRect(40, 440, ctx.measureText(talker).width + 15, 40);
 
           ctx.fillStyle = 'white';
           ctx.fillText(talker, 48, 468);
