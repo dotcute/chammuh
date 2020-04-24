@@ -156,8 +156,7 @@ const show = (text, img, smooth=true) => {
 
 const showTalker = (name) => {
   ctx.lineWidth = 5;
-  // ctx.strokeRect(40, 440, ctx.measureText(name).width + 15, 40);
-  ctx.roundRect(40, 440, ctx.measureText(name).width + 15, 40, 10);
+  ctx.roundRect(40, 440, ctx.measureText(name).width + 15, 40, 10).stroke();
 
   ctx.fillText(name, 48, 468);
 }
