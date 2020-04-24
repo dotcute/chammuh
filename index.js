@@ -101,8 +101,8 @@ const show = (text, img) => {
   ctx.font = '24px Spoqa Han Sans'
   ctx.fillStyle = 'white'
 
-  ctx.clearRect(0, 430, canvas.width, canvas.height)
   for (let i = 1; i <= text.length; i++) {
+    ctx.clearRect(0, 430, canvas.width, canvas.height)
     ctx.fillText(text.slice(0, i), (canvas.width / 2) - (ctx.measureText(text).width / 2), 470);
   }
 }
