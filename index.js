@@ -113,22 +113,26 @@ const show = (text, img, smooth=true) => {
     }
 
     ctx.font = '24px Spoqa Han Sans'
-    ctx.fillStyle = 'white'
 
     if (smooth) {
       for (let i = 1; i <= text.length; i++) {
         ctx.clearRect(0, 430, canvas.width, canvas.height);
+
+        ctx.fillStyle = 'white'
         ctx.fillText(text.slice(0, i), (canvas.width / 2) - (ctx.measureText(text).width / 2), 470);
 
         if (talker) {
+          ctx.fillStyle = '#658EFF';
+          ctx.strokeStyle = 'white';
           ctx.fillRect(20, 450, 100, 40);
         }
-
         await waitMillisecs(33);
       }
     } else {
       ctx.clearRect(0, 430, canvas.width, canvas.height);
       if (talker) ctx.fillRect(40, 480, 100, 40);
+
+      ctx.fillStyle = 'white'
       ctx.fillText(text, (canvas.width / 2) - (ctx.measureText(text).width / 2), 470);
     }
     resolve();
