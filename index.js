@@ -43,44 +43,42 @@ const playScene = (script, name) => {
 
     if (!scene) alert(`장면 '${name}' 이 존재하지 않습니다.`);
 
-    for (let s of scene) {
-      if (s.trigger && !eval(s.trigger)) continue;
+    for (let behavior of scene) {
+      if (behavior.trigger && !eval(behavior.trigger)) continue;
 
-      switch (s.type) {
+      switch (behavior.type) {
         case 'conv':
-          await playConv(s.content);
+          await playConv(behavior.contents);
           break;
         case 'ques':
-          await playQues(s.content, s.answer);
+          await playQues(behavior.content, behavior.answers);
           break;
         case 'scene':
-          await playScene(script, s.content);
+          await playScene(script, behavior.name);
           break;
         default:
           alert('정의되지 않은 type 값입니다.');
           break;
       }
-      if (s.script) eval(s.script);
+      if (behavior.scripts) eval(behavior.scripts);
     }
     resolve();
   });
 };
 
-const playConv = (content) => {
+const playConv = (contents) => {
   return new Promise(async (resolve, reject) => {
-    for (let c of content) {
+    for (let content of contents) {
       await waitUntilClick();
-      show(eval(`\`${c[0]}\``), c[1]);
+      show(eval(`\`${content[0]}\``), content[1]);
     }
     resolve();
   });
 };
 
-const playQues = (content, answer) => {
+const playQues = (content, answers) => {
   return new Promise(async (resolve, reject) => {
-    for (let c of content) {
-      await waitUntilClick(c);
-    }
+    // TODO
     resolve();
   });
 };
@@ -98,7 +96,7 @@ const waitUntilClick = () => {
 };
 
 const show = (text, img) => {
-  if (img) image.src = `https://rawcdn.githack.com/EntryJSers/chammuh_assets/master/assets/${img}.png`
+  if (img) image.src = `./assets/${img}.png`
   ctx.clearRect(0, 430, canvas.width, canvas.height)
   ctx.font = '24px Spoqa Han Sans'
   ctx.fillStyle = 'white'

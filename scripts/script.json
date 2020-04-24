@@ -2,14 +2,14 @@
   "main": [
     {
       "type": "scene",
-      "content": "1-등굣길"
+      "name": "1-등굣길"
     }
   ],
 
   "1-등굣길": [
     {
       "type": "conv",
-      "content": [
+      "contents": [
         ["등굣길..", "chammuh_normal"],
         ["참머: 안녕 ${nickname}!"],
         ["참머: 학교 같이 가자"],
@@ -34,14 +34,14 @@
   "1-2": [
     {
       "type": "conv",
-      "content": [
+      "contents": [
         [ "참머다 참머", "chammuh_normal" ],
         [ "그녀는 여기 이 미용실 사장님의 딸이다." ]
       ]
     },
     {
       "type": "conv",
-      "content": [
+      "contents": [
         ["안녕 ${nickname}! 머리 깎으러 왔구나!", "chammuh_normal"],
         ["빨리 앉아!"],
         ["싹 다 깎아주겠어...", "chammuh_evil"],
