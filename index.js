@@ -95,6 +95,12 @@ const waitUntilClick = () => {
   });
 };
 
+const waitMillisecs = (ms) => {
+  return new Promise(async (resolve, reject) => {
+    setTimeout(resolve, ms);
+  });
+}
+
 const show = (text, img) => {
   if (img) image.src = `./assets/${img}.png`
 
@@ -104,6 +110,7 @@ const show = (text, img) => {
   for (let i = 1; i <= text.length; i++) {
     ctx.clearRect(0, 430, canvas.width, canvas.height)
     ctx.fillText(text.slice(0, i), (canvas.width / 2) - (ctx.measureText(text).width / 2), 470);
+    waitMillisecs(50);
   }
 }
 
