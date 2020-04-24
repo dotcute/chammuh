@@ -45,7 +45,6 @@ const playScene = (script, name) => {
 
     for (let behavior of scene) {
       if (behavior.trigger && !eval(behavior.trigger)) continue;
-      if (behavior.scripts) eval(behavior.scripts);
 
       switch (behavior.type) {
         case 'conv':
@@ -56,6 +55,9 @@ const playScene = (script, name) => {
           break;
         case 'scene':
           await playScene(script, behavior.name);
+          break;
+        case 'js':
+          eval(behavior.code);
           break;
         default:
           alert('정의되지 않은 type 값입니다.');
