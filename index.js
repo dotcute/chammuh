@@ -23,12 +23,10 @@ const confirm = (title, id, placeholder, func) => {
   });
 }
 
-/*
 confirm('이름이 뭐야?', 'nameInput', '홍길동', (id) => {
   nickname = document.getElementById(id).value;
   if (nickname == '') window.location.reload();
 });
-*/
 
 // ====================================================================================================
 
@@ -47,6 +45,7 @@ const playScene = (script, name) => {
 
     for (let behavior of scene) {
       if (behavior.trigger && !eval(behavior.trigger)) continue;
+      if (behavior.scripts) eval(behavior.scripts);
 
       switch (behavior.type) {
         case 'conv':
@@ -62,7 +61,6 @@ const playScene = (script, name) => {
           alert('정의되지 않은 type 값입니다.');
           break;
       }
-      if (behavior.scripts) eval(behavior.scripts);
     }
     resolve();
   });
@@ -149,7 +147,7 @@ const showTalker = (name) => {
 // ====================================================================================================
 
 window.addEventListener('load', () => {
-  // show('클릭하여 시작...', 'title', false);
+  show('클릭하여 시작...', 'title', false);
 });
 
 image.addEventListener('load', () => {
