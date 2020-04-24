@@ -101,7 +101,7 @@ const waitMillisecs = (ms) => {
   });
 }
 
-const show = (text, img) => {
+const show = async (text, img) => {
   if (img) image.src = `./assets/${img}.png`
 
   ctx.font = '24px Spoqa Han Sans'
@@ -110,7 +110,7 @@ const show = (text, img) => {
   for (let i = 1; i <= text.length; i++) {
     ctx.clearRect(0, 430, canvas.width, canvas.height)
     ctx.fillText(text.slice(0, i), (canvas.width / 2) - (ctx.measureText(text).width / 2), 470);
-    waitMillisecs(50);
+    await waitMillisecs(50);
   }
 }
 
