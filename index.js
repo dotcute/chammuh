@@ -122,13 +122,12 @@ const show = (text, img, smooth=true) => {
         ctx.fillText(text.slice(0, i), (canvas.width / 2) - (ctx.measureText(text).width / 2), 470);
 
         if (talker) {
-          ctx.fillStyle = '#658EFF';
           ctx.strokeStyle = 'white';
-          ctx.fillRect(40, 440, 100, 40);
+          ctx.lineWidth = 5;
           ctx.strokeRect(40, 440, 100, 40);
 
           ctx.fillStyle = 'white';
-          ctx.fillText(talker, 40, 460);
+          ctx.fillText(talker, 45, 465);
         }
         await waitMillisecs(33);
       }
