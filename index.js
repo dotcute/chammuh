@@ -69,8 +69,8 @@ const playScene = (script, name) => {
 const playConv = (contents) => {
   return new Promise(async (resolve, reject) => {
     for (let content of contents) {
-      await show(eval(`\`${content[0]}\``), content[1]);
       await waitUntilClick();
+      await show(eval(`\`${content[0]}\``), content[1]);
     }
     resolve();
   });
@@ -121,10 +121,10 @@ const show = (text, img, smooth=true) => {
         ctx.clearRect(0, 430, canvas.width, canvas.height);
         if (talker) showTalker(talker);
 
-        ctx.fillStyle = 'white'
         ctx.fillText(text.slice(0, i), (canvas.width / 2) - (ctx.measureText(text).width / 2), 470);
 
         await waitMillisecs(33);
+        isClick = false;
       }
     } else {
       ctx.clearRect(0, 430, canvas.width, canvas.height);
