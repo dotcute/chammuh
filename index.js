@@ -7,16 +7,6 @@ let nickname = '';
 
 // ====================================================================================================
 
-const preloading = (imageArray) => {
-  let n = imageArray.length
-  for (let i = 0; i < n; i++) {
-    let img = new Image()
-    img.src = `./assets/${imageArray[i]}.png`
-  }
-}
-
-// ====================================================================================================
-
 const confirm = (title, id, placeholder, func) => {
   Swal.fire({
     title: title,
@@ -131,6 +121,7 @@ const waitMillisecs = (ms) => {
 const show = (text, img, smooth = true) => {
   return new Promise(async (resolve, reject) => {
     if (img) image.src = `./assets/${img}.png`
+    else image.src = image.src;
 
     let talker = undefined;
     if (text.split(': ').length > 1) {
@@ -171,6 +162,7 @@ const showTalker = (name) => {
 
   ctx.fillText(name, 48, 468);
 }
+
 const preloading = (imageArray) => {
   let n = imageArray.length
   for (let i = 0; i < n; i++) {

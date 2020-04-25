@@ -52,5 +52,16 @@
         ["아이.. 이게 뭐야.."]
       ]
     }
+  ],
+
+  "image_load_test": [
+    {
+      "type": "conv"
+      "contents": [
+        ["chammuh_normal", "chammuh_normal"],
+        ["exon_caught", "exon_caught"],
+        ["chammuh_evil", "chammuh_evil"]
+      ]
+    }
   ]
 }
