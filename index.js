@@ -194,6 +194,6 @@ canvas.addEventListener('click', () => {
 
 // ====================================================================================================
 
-ctx.font = '24px Spoqa Han Sans'
+ctx.font = '22px Spoqa Han Sans'
 fetch('./assets/list.txt').then(async res => preloading((await res.text()).split(', ')))
 fetch('./scripts/script.json').then(async res => playScript(await res.json()));
