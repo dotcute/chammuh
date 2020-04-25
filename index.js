@@ -139,7 +139,7 @@ const show = (text, img, smooth = true) => {
         showTalker(talker);
 
         ctx.fillStyle = '#658EFF'
-        ctx.roundRect(140, 410, canvas.width - 280, 90, 15).fill();
+        ctx.roundRect(140, 410, canvas.width - 280, 90, 10).fill();
 
         ctx.fillStyle = 'white'
         ctx.fillText(text.slice(0, i), (canvas.width / 2) - (ctx.measureText(text).width / 2), 470);
@@ -149,7 +149,7 @@ const show = (text, img, smooth = true) => {
       }
     } else {
       ctx.fillStyle = '#658EFF'
-      ctx.roundRect(140, 410, canvas.width - 280, 90, 15).fill();
+      ctx.roundRect(140, 410, canvas.width - 280, 90, 10).fill();
        
       showTalker(talker);
 
@@ -164,9 +164,9 @@ const show = (text, img, smooth = true) => {
 const showTalker = (name) => {
   ctx.lineWidth = 5;
   ctx.fillStyle = 'white'
-  ctx.roundRect(160, 370, ctx.measureText(name).width + 15, 50, 10).fill();
+  ctx.roundRect(160, 370, 160, 50, 10).fill();
   ctx.strokeStyle = '#658EFF'
-  ctx.roundRect(160, 370, ctx.measureText(name).width + 15, 50, 10).stroke();
+  ctx.roundRect(160, 370, 160, 50, 10).stroke();
 
   ctx.fillStyle = '#658EFF'
   ctx.fillText(name, 168, 400);
