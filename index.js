@@ -163,8 +163,9 @@ const show = (text, img, smooth = true) => {
 
 const showTalker = (name) => {
   ctx.lineWidth = 5;
+  ctx.fillStyle = 'white'
   ctx.strokeStyle = '#658EFF'
-  ctx.roundRect(160, 370, ctx.measureText(name).width + 15, 50, 10).stroke();
+  ctx.roundRect(160, 370, ctx.measureText(name).width + 15, 50, 10).fill().stroke();
 
   ctx.fillStyle = '#658EFF'
   ctx.fillText(name, 168, 400);
