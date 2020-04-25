@@ -142,7 +142,7 @@ const show = (text, img, smooth = true) => {
         ctx.roundRect(140, 410, canvas.width - 280, 90, 10).fill();
 
         ctx.fillStyle = 'white'
-        ctx.fillText(text.slice(0, i), (canvas.width / 2) - (ctx.measureText(text).width / 2), 470);
+        ctx.fillText(text.slice(0, i), (canvas.width / 2) - (ctx.measureText(text).width / 2), 455);
 
         await waitMillisecs(33);
         isClick = false;

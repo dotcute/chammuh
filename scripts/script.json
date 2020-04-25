@@ -3,10 +3,6 @@
     {
       "type": "scene",
       "name": "1-등굣길"
-    },
-    {
-      "type": "scene",
-      "name": "image_load_test"
     }
   ],
   
@@ -54,17 +50,6 @@
         ["(싹둑 싹둑 서걱 서걱 위이이이ㅣㅇ이이ㅣ잉)"],
         ["머머리가 되었다!"],
         ["아이.. 이게 뭐야.."]
-      ]
-    }
-  ],
-
-  "image_load_test": [
-    {
-      "type": "conv",
-      "contents": [
-        ["chammuh_normal", "chammuh_normal"],
-        ["exon_caught", "exon_caught"],
-        ["chammuh_evil", "chammuh_evil"]
       ]
     }
   ]
