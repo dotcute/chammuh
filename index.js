@@ -7,6 +7,16 @@ let nickname = '';
 
 // ====================================================================================================
 
+const preloading = (imageArray) => {
+  let n = imageArray.length
+  for (let i = 0; i < n; i++) {
+    let img = new Image()
+    img.src = `./assets/${imageArray[i]}.png`
+  }
+}
+
+// ====================================================================================================
+
 const confirm = (title, id, placeholder, func) => {
   Swal.fire({
     title: title,
@@ -145,6 +155,7 @@ const show = (text, img, smooth=true) => {
       }
     } else {
       ctx.clearRect(0, 430, canvas.width, canvas.height);
+      
       if (talker) showTalker(talker);
 
       ctx.fillText(text, (canvas.width / 2) - (ctx.measureText(text).width / 2), 470);
@@ -177,4 +188,5 @@ canvas.addEventListener('click', () => {
 
 // ====================================================================================================
 
+preloading(['title', 'chammuh_normal', 'chammuh_evil', 'exon_caught']);
 fetch('./scripts/script.json').then(async res => playScript(await res.json()));
