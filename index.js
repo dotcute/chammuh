@@ -178,7 +178,7 @@ window.addEventListener('load', () => {
 });
 
 image.addEventListener('load', () => {
-  ctx.drawImage(image, 0, 0, 960, 420);
+  ctx.drawImage(image, 0, 0, 960, 540);
 }, false);
 
 canvas.addEventListener('click', () => {
