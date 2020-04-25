@@ -34,11 +34,11 @@ CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
   if (w < 2 * r) r = w / 2;
   if (h < 2 * r) r = h / 2;
   this.beginPath();
-  this.moveTo(x+r, y);
-  this.arcTo(x+w, y,   x+w, y+h, r);
-  this.arcTo(x+w, y+h, x,   y+h, r);
-  this.arcTo(x,   y+h, x,   y,   r);
-  this.arcTo(x,   y,   x+w, y,   r);
+  this.moveTo(x + r, y);
+  this.arcTo(x + w, y, x + w, y + h, r);
+  this.arcTo(x + w, y + h, x, y + h, r);
+  this.arcTo(x, y + h, x, y, r);
+  this.arcTo(x, y, x + w, y, r);
   this.closePath();
   return this;
 }
@@ -118,7 +118,7 @@ const waitMillisecs = (ms) => {
   });
 }
 
-const show = (text, img, smooth=true) => {
+const show = (text, img, smooth = true) => {
   return new Promise(async (resolve, reject) => {
     if (img) image.src = `./assets/${img}.png`
 
@@ -151,7 +151,7 @@ const show = (text, img, smooth=true) => {
     }
     resolve();
   });
-  
+
 }
 
 const showTalker = (name) => {
@@ -159,6 +159,13 @@ const showTalker = (name) => {
   ctx.roundRect(40, 440, ctx.measureText(name).width + 15, 40, 10).stroke();
 
   ctx.fillText(name, 48, 468);
+}
+const preloading = (imageArray) => {
+  let n = imageArray.length
+  for (let i = 0; i < n; i++) {
+    let img = new Image()
+    img.src = `./assets/${imageArray[i]}`
+  }
 }
 
 // ====================================================================================================
@@ -178,3 +185,4 @@ canvas.addEventListener('click', () => {
 // ====================================================================================================
 
 fetch('./scripts/script.json').then(async res => playScript(await res.json()));
+fetch('./assets/list.txt').then(async res => preloading((await res.text()).split(', ')))
