@@ -132,8 +132,6 @@ const show = (text, img, smooth = true) => {
       text = '(' + text + ')';
     }
 
-    ctx.font = '24px Spoqa Han Sans'
-
     if (smooth) {
       for (let i = 1; i <= text.length; i++) {
         showTalker(talker);
@@ -196,5 +194,6 @@ canvas.addEventListener('click', () => {
 
 // ====================================================================================================
 
+ctx.font = '24px Spoqa Han Sans'
 fetch('./assets/list.txt').then(async res => preloading((await res.text()).split(', ')))
 fetch('./scripts/script.json').then(async res => playScript(await res.json()));
