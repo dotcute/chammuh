@@ -131,14 +131,15 @@ const show = (text, img, smooth = true) => {
     }
 
     ctx.font = '24px Spoqa Han Sans'
-    ctx.fillStyle = 'white'
+    ctx.fillStyle = '658EFF'
     ctx.strokeStyle = 'white'
 
     if (smooth) {
       for (let i = 1; i <= text.length; i++) {
-        ctx.roundRect(100, 440, canvas.width - 100, canvas.height - 20);
+        ctx.roundRect(100, 440, canvas.width - 100, canvas.height - 20).fill();
         if (talker) showTalker(talker);
 
+        ctx.fillStyle = 'white'
         ctx.fillText(text.slice(0, i), (canvas.width / 2) - (ctx.measureText(text).width / 2), 470);
 
         await waitMillisecs(33);
