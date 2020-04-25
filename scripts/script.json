@@ -3,6 +3,10 @@
     {
       "type": "scene",
       "name": "1-등굣길"
+    },
+    {
+      "type": "scene",
+      "name": "image_load_test"
     }
   ],
   
