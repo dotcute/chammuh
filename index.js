@@ -138,7 +138,7 @@ const show = (text, img, smooth = true) => {
       for (let i = 1; i <= text.length; i++) {
         ctx.fillStyle = '658EFF'
         ctx.roundRect(140, 410, canvas.width - 280, 90, 15).fill();
-        
+
         if (talker) showTalker(talker);
 
         ctx.fillStyle = 'white'
@@ -148,10 +148,12 @@ const show = (text, img, smooth = true) => {
         isClick = false;
       }
     } else {
-      ctx.clearRect(0, 430, canvas.width, canvas.height);
-      
+      ctx.fillStyle = '658EFF'
+      ctx.roundRect(140, 410, canvas.width - 280, 90, 15).fill();
+       
       if (talker) showTalker(talker);
 
+      ctx.fillStyle = 'white'
       ctx.fillText(text, (canvas.width / 2) - (ctx.measureText(text).width / 2), 470);
     }
     resolve();
