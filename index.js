@@ -133,8 +133,6 @@ const show = (text, img, smooth = true) => {
     }
 
     ctx.font = '24px Spoqa Han Sans'
-    ctx.fillStyle = '#658EFF'
-    ctx.strokeStyle = 'white'
 
     if (smooth) {
       for (let i = 1; i <= text.length; i++) {
@@ -165,9 +163,11 @@ const show = (text, img, smooth = true) => {
 
 const showTalker = (name) => {
   ctx.lineWidth = 5;
-  ctx.roundRect(40, 440, ctx.measureText(name).width + 15, 40, 10).stroke();
+  ctx.strokeStyle = '#658EFF'
+  ctx.roundRect(160, 380, ctx.measureText(name).width + 15, 50, 10).stroke();
 
-  ctx.fillText(name, 48, 468);
+  ctx.fillStyle = '#658EFF'
+  ctx.fillText(name, 168, 400);
 }
 
 const preloading = (imageArray) => {
