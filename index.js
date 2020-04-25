@@ -136,7 +136,7 @@ const show = (text, img, smooth = true) => {
 
     if (smooth) {
       for (let i = 1; i <= text.length; i++) {
-        ctx.roundRect(100, 440, canvas.width - 100, canvas.height - 20).fill();
+        ctx.roundRect(140, 410, canvas.width - 280, 90, 15).fill();
         if (talker) showTalker(talker);
 
         ctx.fillStyle = 'white'
