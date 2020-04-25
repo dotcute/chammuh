@@ -56,7 +56,7 @@
 
   "image_load_test": [
     {
-      "type": "conv"
+      "type": "conv",
       "contents": [
         ["chammuh_normal", "chammuh_normal"],
         ["exon_caught", "exon_caught"],
