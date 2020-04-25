@@ -121,13 +121,15 @@ const waitMillisecs = (ms) => {
 const show = (text, img, smooth = true) => {
   return new Promise(async (resolve, reject) => {
     if (img) image.src = `./assets/${img}.png`
-    else image.src = image.src;
 
     let talker = undefined;
     if (text.split(': ').length > 1) {
       const arr = text.split(': ');
       talker = arr.shift();
-      text = arr.join(': ');
+      text = '"' + arr.join(': ') + '"';
+    } else {
+      talker = nickname;
+      text = '(' + text + ')';
     }
 
     ctx.font = '24px Spoqa Han Sans'
@@ -136,10 +138,10 @@ const show = (text, img, smooth = true) => {
 
     if (smooth) {
       for (let i = 1; i <= text.length; i++) {
+        showTalker(talker);
+
         ctx.fillStyle = '#658EFF'
         ctx.roundRect(140, 410, canvas.width - 280, 90, 15).fill();
-
-        if (talker) showTalker(talker);
 
         ctx.fillStyle = 'white'
         ctx.fillText(text.slice(0, i), (canvas.width / 2) - (ctx.measureText(text).width / 2), 470);
@@ -151,7 +153,7 @@ const show = (text, img, smooth = true) => {
       ctx.fillStyle = '#658EFF'
       ctx.roundRect(140, 410, canvas.width - 280, 90, 15).fill();
        
-      if (talker) showTalker(talker);
+      showTalker(talker);
 
       ctx.fillStyle = 'white'
       ctx.fillText(text, (canvas.width / 2) - (ctx.measureText(text).width / 2), 470);
@@ -192,5 +194,5 @@ canvas.addEventListener('click', () => {
 
 // ====================================================================================================
 
-fetch('./scripts/script.json').then(async res => playScript(await res.json()));
 fetch('./assets/list.txt').then(async res => preloading((await res.text()).split(', ')))
+fetch('./scripts/script.json').then(async res => playScript(await res.json()));
