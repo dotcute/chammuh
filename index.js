@@ -169,7 +169,7 @@ const showTalker = (name) => {
   ctx.roundRect(160, 370, 160, 50, 10).stroke();
 
   ctx.fillStyle = '#658EFF'
-  ctx.fillText(name, 168, 400);
+  ctx.fillText(name, 240 - (ctx.measureText(text).width / 2), 400);
 }
 
 const preloading = (imageArray) => {
