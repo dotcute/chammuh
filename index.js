@@ -131,12 +131,12 @@ const show = (text, img, smooth = true) => {
     }
 
     ctx.font = '24px Spoqa Han Sans'
-    ctx.fillStyle = '658EFF'
+    ctx.fillStyle = '#658EFF'
     ctx.strokeStyle = 'white'
 
     if (smooth) {
       for (let i = 1; i <= text.length; i++) {
-        ctx.fillStyle = '658EFF'
+        ctx.fillStyle = '#658EFF'
         ctx.roundRect(140, 410, canvas.width - 280, 90, 15).fill();
 
         if (talker) showTalker(talker);
@@ -148,7 +148,7 @@ const show = (text, img, smooth = true) => {
         isClick = false;
       }
     } else {
-      ctx.fillStyle = '658EFF'
+      ctx.fillStyle = '#658EFF'
       ctx.roundRect(140, 410, canvas.width - 280, 90, 15).fill();
        
       if (talker) showTalker(talker);
