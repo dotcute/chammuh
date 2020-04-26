@@ -17,3 +17,7 @@ fetch('./assets/list.txt')
   .then(() => show('클릭하여 시작...', 'title', false))
   
 fetch('./scripts/script.json').then(async res => playScript(await res.json()))
+
+document.body.addEventListener('selectstart', () => {
+  return false
+})
