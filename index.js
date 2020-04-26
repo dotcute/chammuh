@@ -15,5 +15,8 @@ confirm('이름이 뭐야?', 'nameInput', '홍길동', (id, reconfirm) => {
   }
 });
 
-fetch('./assets/list.txt').then(async res => preloading('./assets/', (await res.text()).split(', ')))
+fetch('./assets/list.txt')
+  .then(async res => preloading('./assets/', (await res.text()).split(', ')))
+  .then(() => show('클릭하여 시작...', 'title', false))
+  
 fetch('./scripts/script.json').then(async res => playScript(await res.json()));
