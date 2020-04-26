@@ -18,12 +18,11 @@ const confirm = (title, id, placeholder, func) => {
   });
 }
 
-const preloading = (imageArray) => {
-  let n = imageArray.length
-  for (let i = 0; i < n; i++) {
-    let img = new Image()
-    img.src = `./assets/${imageArray[i]}`
-  }
+const preloading = (dir, arr) => {
+  arr.forEach(e => {
+    let img = new Image();
+    img.src = dir + e;
+  });
 }
 
 // ====================================================================================================
@@ -210,5 +209,5 @@ confirm('이름이 뭐야?', 'nameInput', '홍길동', (id, reconfirm) => {
   }
 });
 
-fetch('./assets/list.txt').then(async res => preloading((await res.text()).split(', ')))
+fetch('./assets/list.txt').then(async res => preloading('./assets/', (await res.text()).split(', ')))
 fetch('./scripts/script.json').then(async res => playScript(await res.json()));
