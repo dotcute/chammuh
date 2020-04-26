@@ -3,7 +3,6 @@ const canvas = document.getElementById('game'),
   image = new Image(),
   httpRequest = new XMLHttpRequest();
 
-let nickname = '';
 
 // ====================================================================================================
 
@@ -23,6 +22,13 @@ const confirm = (title, id, placeholder, func) => {
   });
 }
 
+const preloading = (imageArray) => {
+  let n = imageArray.length
+  for (let i = 0; i < n; i++) {
+    let img = new Image()
+    img.src = `./assets/${imageArray[i]}`
+  }
+}
 
 // ====================================================================================================
 
@@ -91,10 +97,17 @@ const playConv = (contents) => {
 
 const playQues = (content, answers) => {
   return new Promise(async (resolve, reject) => {
-    // TODO
+    await show(eval(`\`${content[0]}\``), content[1]);
+    await waitUntilChoose(answers.options);
     resolve();
   });
 };
+
+const waitMillisecs = (ms) => {
+  return new Promise(async (resolve, reject) => {
+    setTimeout(resolve, ms);
+  });
+}
 
 const waitUntilClick = () => {
   return new Promise(async (resolve, reject) => {
@@ -108,10 +121,11 @@ const waitUntilClick = () => {
   });
 };
 
-const waitMillisecs = (ms) => {
+const waitUntilChoose = (options) => {
   return new Promise(async (resolve, reject) => {
-    setTimeout(resolve, ms);
-  });
+    // TODO
+    resolve();
+  })
 }
 
 const show = (text, img, smooth = true) => {
@@ -166,13 +180,6 @@ const showTalker = (name) => {
   ctx.fillText(name, 240 - (ctx.measureText(name).width / 2), 400);
 }
 
-const preloading = (imageArray) => {
-  let n = imageArray.length
-  for (let i = 0; i < n; i++) {
-    let img = new Image()
-    img.src = `./assets/${imageArray[i]}`
-  }
-}
 
 // ====================================================================================================
 
@@ -190,6 +197,7 @@ canvas.addEventListener('click', () => {
 
 // ====================================================================================================
 
+let nickname = ''
 ctx.font = '22px Spoqa Han Sans'
 
 confirm('이름이 뭐야?', 'nameInput', '홍길동', (id) => {
