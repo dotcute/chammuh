@@ -1,6 +1,12 @@
 {
   "main": [
     {
+      "type": "conv",
+      "contents": [
+        ["클릭하여 시작..", "title"]
+      ]
+    },
+    {
       "type": "ques",
       "content": "테스트용 질문이야.",
       "answers": {
