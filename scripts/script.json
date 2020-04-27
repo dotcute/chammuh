@@ -91,8 +91,21 @@
         ["(이름1): 왜그렇게 빤히 쳐다봐? 할말 있어?"],
         ["너무 뻔히 쳐다본 모양이다."]
       ]
+    },
+    {
+      "type": "ques",
+      "content": "테스트용 질문이야.",
+      "answers": {
+        "options": ["옵션1", "옵션2", "옵션3"],
+        "scenes": ["no_event", "no_event", "no_event"]
+      }
+    },
+    {
+      "type": "conv",
+      "contents": [
+        ["테스트용 대사야."]
+      ]
     }
-    
   ],
 
   "no_event": []
