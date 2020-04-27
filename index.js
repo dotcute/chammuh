@@ -1,4 +1,9 @@
-let nickname = ''
+let nickname = '',
+  lovePoint = {
+    chammuh: 0,
+    이름1: 0
+  };
+
 ctx.font = '22px Spoqa Han Sans'
 
 confirm('이름이 뭐야?', 'nameInput', '홍길동', (id, reconfirm) => {
