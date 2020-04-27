@@ -9,9 +9,9 @@
     {
       "type": "ques",
       "content": "테스트용 질문이야.",
-      "answers": {
-        "options": ["옵션1", "옵션2", "옵션3"],
-        "scenes": ["no_event", "no_event", "no_event"]
+      "options": {
+        "answers": ["옵션1", "옵션2", "옵션3"],
+        "scripts": ["console.log('1')", "console.log('2')", "console.log('3')"]
       }
     },
     {
